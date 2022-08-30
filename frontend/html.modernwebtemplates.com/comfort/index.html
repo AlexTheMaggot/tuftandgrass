@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+	<title>Comfort+</title>
+	<meta charset="utf-8">
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/main.css" class="color-switcher-link">
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+	<!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
+
+	<!-- search modal -->
+	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">
+				<i class="rt-icon2-cross2"></i>
+			</span>
+		</button>
+		<div class="widget widget_search">
+			<form method="get" class="searchform search-form form-inline" action="index.html">
+				<div class="form-group">
+					<input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
+				</div>
+				<button type="submit" class="theme_button">Search</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls with_padding">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+		-->
+
+		</div>
+	</div>
+	<!-- eof .modal -->
+
+	<!-- wrappers for visual page editor and boxed version of template -->
+	<div id="canvas">
+		<div id="box_wrapper">
+
+			<!-- template sections -->
+
+			<section class="page_topline with_search ls ms section_padding_top_5 section_padding_bottom_5 table_section">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-8 text-center text-sm-left">
+							<p class="greylinks">
+					<a class="social-icon soc-facebook" href="index.html#" title="Facebook"></a>
+					<a class="social-icon soc-twitter" href="index.html#" title="Twitter"></a>
+					<a class="social-icon soc-google" href="index.html#" title="Google"></a>
+				</p>
+						</div>
+						<div class="col-sm-4 text-center text-sm-right">
+
+							<div class="widget widget_search">
+								<form method="get" class="searchform form-inline" action="index.html">
+									<div class="form-group-wrap">
+										<div class="form-group margin_0">
+											<label class="sr-only" for="topline-search">Search for:</label>
+											<input id="topline-search" type="text" value="" name="search" class="form-control" placeholder="Search">
+										</div>
+										<button type="submit" class="theme_button">Search</button>
+									</div>
+								</form>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<header class="page_header header_white toggler_right">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 display_table">
+							<div class="header_left_logo display_table_cell">
+								<a href="index.html" class="logo top_logo">
+									<img src="images/logo.png" alt="">
+									<span class="logo_text">
+										<span class="big">Comfort
+											<span class="highlight2">+</span>
+										</span>
+										<span class="small-text lightgrey">Furniture company</span>
+									</span>
+								</a>
+							</div>
+
+							<div class="header_mainmenu display_table_cell text-right">
+								<!-- main nav start -->
+								<nav class="mainmenu_wrapper">
+									<ul class="mainmenu nav sf-menu">
+										<li class="active">
+											<a href="index.html">Home</a>
+											<ul>
+												<li>
+													<a href="index.html">MultiPage</a>
+												</li>
+												<li>
+													<a href="index_static.html">Static Intro</a>
+												</li>
+												<li>
+													<a href="index_singlepage.html">Single Page</a>
+												</li>
+												<li>
+													<a href="admin_index.html">Admin Dashboard</a>
+												</li>
+											</ul>
+										</li>
+
+										<li>
+											<a href="about.html">Pages</a>
+											<ul>
+												<!-- features -->
+												<li>
+													<a href="shortcodes_teasers.html">Shortcodes &amp; Widgets</a>
+													<ul>
+														<li>
+															<a href="shortcodes_typography.html">Typography</a>
+														</li>
+														<li>
+															<a href="shortcodes_buttons.html">Buttons</a>
+														</li>
+														<li>
+															<a href="shortcodes_teasers.html">Teasers</a>
+														</li>
+														<li>
+															<a href="shortcodes_progress.html">Progress</a>
+														</li>
+														<li>
+															<a href="shortcodes_tabs.html">Tabs &amp; Collapse</a>
+														</li>
+														<li>
+															<a href="shortcodes_bootstrap.html">Bootstrap Elements</a>
+														</li>
+														<li>
+															<a href="shortcodes_widgets.html">Widgets</a>
+														</li>
+														<li>
+															<a href="shortcodes_animation.html">Animation</a>
+														</li>
+														<li>
+															<a href="shortcodes_icons.html">Template Icons</a>
+														</li>
+														<li>
+															<a href="shortcodes_socialicons.html">Social Icons</a>
+														</li>
+													</ul>
+												</li>
+												<!-- eof features -->
+
+												<li>
+													<a href="about.html">About</a>
+												</li>
+
+												<!-- shop -->
+												<li>
+													<a href="shop-right.html">Shop</a>
+													<ul>
+														<li>
+															<a href="shop-right.html">Shop</a>
+														</li>
+														<li>
+															<a href="shop-product-right.html">Single Product</a>
+														</li>
+														<li>
+															<a href="shop-cart-right.html">Shopping Cart</a>
+														</li>
+														<li>
+															<a href="shop-checkout-right.html">Checkout</a>
+														</li>
+														<li>
+															<a href="shop-register.html">Registration</a>
+														</li>
+													</ul>
+												</li>
+												<!-- eof shop -->
+
+												<li>
+													<a href="timetable.html">Timetable</a>
+												</li>
+
+												<!-- events -->
+												<li>
+													<a href="events-left.html">Events</a>
+													<ul>
+														<li>
+															<a href="events-left.html">Left Sidebar</a>
+														</li>
+														<li>
+															<a href="events-right.html">Right Sidebar</a>
+														</li>
+														<li>
+															<a href="events-full.html">Full Width</a>
+														</li>
+														<li>
+															<a href="event-single-left.html">Single Event</a>
+															<ul>
+																<li>
+																	<a href="event-single-left.html">Left Sidebar</a>
+																</li>
+																<li>
+																	<a href="event-single-right.html">Right Sidebar</a>
+																</li>
+																<li>
+																	<a href="event-single-full.html">Full Width</a>
+																</li>
+															</ul>
+														</li>
+													</ul>
+												</li>
+												<!-- eof events -->
+
+												<li>
+													<a href="team.html">Team</a>
+													<ul>
+														<li>
+															<a href="team.html">Team 1</a>
+														</li>
+														<li>
+															<a href="team2.html">Team 2</a>
+														</li>
+														<li>
+															<a href="team-single.html">Team Member</a>
+														</li>
+													</ul>
+												</li>
+
+												<li>
+													<a href="services.html">Services</a>
+													<ul>
+														<li>
+															<a href="services.html">Services</a>
+														</li>
+														<li>
+															<a href="service-single.html">Single Service</a>
+														</li>
+													</ul>
+												</li>
+
+												<li>
+													<a href="comingsoon1.html">Comingsoon</a>
+													<ul>
+														<li>
+															<a href="comingsoon1.html">Comingsoon</a>
+														</li>
+														<li>
+															<a href="comingsoon2.html">Comingsoon 2</a>
+														</li>
+													</ul>
+												</li>
+
+												<li>
+													<a href="faq.html">FAQ</a>
+													<ul>
+														<li>
+															<a href="faq.html">FAQ</a>
+														</li>
+														<li>
+															<a href="faq2.html">FAQ 2</a>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<a href="404.html">404</a>
+													<ul>
+														<li>
+															<a href="404.html">404</a>
+														</li>
+														<li>
+															<a href="4042.html">404 2</a>
+														</li>
+													</ul>
+												</li>
+
+											</ul>
+										</li>
+										<!-- eof pages -->
+
+										<li>
+											<a href="index.html#">Features</a>
+											<div class="mega-menu">
+												<ul class="mega-menu-row">
+													<li class="mega-menu-col">
+														<a href="index.html#">Headers</a>
+														<ul>
+															<li>
+																<a href="header1.html">Header Type 1</a>
+															</li>
+															<li>
+																<a href="header2.html">Header Type 2</a>
+															</li>
+															<li>
+																<a href="header3.html">Header Type 3</a>
+															</li>
+															<li>
+																<a href="header4.html">Header Type 4</a>
+															</li>
+															<li>
+																<a href="header5.html">Header Type 5</a>
+															</li>
+														</ul>
+													</li>
+													<li class="mega-menu-col">
+														<a href="index.html#">Side Menus</a>
+														<ul>
+															<li>
+																<a href="header_side1.html">Slide Left Light</a>
+															</li>
+															<li>
+																<a href="header_side2.html">Slide Right Light</a>
+															</li>
+															<li>
+																<a href="header_side3.html">Push Left Light</a>
+															</li>
+															<li>
+																<a href="header_side4.html">Push Right Light</a>
+															</li>
+															<li>
+																<a href="header_side5.html">Slide Left Dark</a>
+															</li>
+															<li>
+																<a href="header_side6.html">Slide Right Dark</a>
+															</li>
+															<li>
+																<a href="header_side7.html">Push Left Dark</a>
+															</li>
+															<li>
+																<a href="header_side8.html">Push Right Dark</a>
+															</li>
+															<li>
+																<a href="header_side_superfish.html">Superfish Menu</a>
+															</li>
+															<li>
+																<a href="header_side_sticked.html">Sticked Menu</a>
+															</li>
+														</ul>
+													</li>
+													<li class="mega-menu-col">
+														<a href="breadcrumbs1.html">Breadcrumbs</a>
+														<ul>
+															<li>
+																<a href="breadcrumbs1.html">Breadcrumbs 1</a>
+															</li>
+															<li>
+																<a href="breadcrumbs2.html">Breadcrumbs 2</a>
+															</li>
+															<li>
+																<a href="breadcrumbs3.html">Breadcrumbs 3</a>
+															</li>
+															<li>
+																<a href="breadcrumbs4.html">Breadcrumbs 4</a>
+															</li>
+															<li>
+																<a href="breadcrumbs5.html">Breadcrumbs 5</a>
+															</li>
+															<li>
+																<a href="breadcrumbs6.html">Breadcrumbs 6</a>
+															</li>
+														</ul>
+													</li>
+													<li class="mega-menu-col">
+														<a href="footer1.html">Footers</a>
+														<ul>
+															<li>
+																<a href="footer1.html">Footer Type 1</a>
+															</li>
+															<li>
+																<a href="footer2.html">Footer Type 2</a>
+															</li>
+															<li>
+																<a href="footer3.html">Footer Type 3</a>
+															</li>
+															<li>
+																<a href="footer4.html">Footer Type 4</a>
+															</li>
+															<li>
+																<a href="footer5.html">Footer Type 5</a>
+															</li>
+															<li>
+																<a href="footer6.html">Footer Type 6</a>
+															</li>
+															<li>
+																<a href="footer7.html">Footer Type 7</a>
+															</li>
+														</ul>
+													</li>
+													<li class="mega-menu-col">
+														<a href="copyright1.html">Copyrights</a>
+
+														<ul>
+															<li>
+																<a href="copyright1.html">Copyrights 1</a>
+															</li>
+															<li>
+																<a href="copyright2.html">Copyrights 2</a>
+															</li>
+															<li>
+																<a href="copyright3.html">Copyrights 3</a>
+															</li>
+															<li>
+																<a href="copyright4.html">Copyrights 4</a>
+															</li>
+															<li>
+																<a href="copyright5.html">Copyrights 5</a>
+															</li>
+														</ul>
+													</li>
+
+												</ul>
+											</div>
+											<!-- eof mega menu -->
+										</li>
+										<!-- eof features -->
+
+
+										<!-- gallery -->
+										<li>
+											<a href="gallery-regular.html">Gallery</a>
+											<ul>
+												<!-- Gallery regular -->
+												<li>
+													<a href="gallery-regular.html">Gallery Regular</a>
+													<ul>
+														<li>
+															<a href="gallery-regular.html">1 column</a>
+														</li>
+														<li>
+															<a href="gallery-regular-2-cols.html">2 columns</a>
+														</li>
+														<li>
+															<a href="gallery-regular-3-cols.html">3 columns</a>
+														</li>
+													</ul>
+												</li>
+												<!-- eof Gallery regular -->
+
+												<!-- Gallery full width -->
+												<li>
+													<a href="gallery-fullwidth.html">Gallery Full Width</a>
+													<ul>
+														<li>
+															<a href="gallery-fullwidth.html">2 column</a>
+														</li>
+														<li>
+															<a href="gallery-fullwidth-3-cols.html">3 columns</a>
+														</li>
+														<li>
+															<a href="gallery-fullwidth-4-cols.html">4 columns</a>
+														</li>
+													</ul>
+												</li>
+												<!-- eof Gallery full width -->
+
+												<!-- Gallery extended -->
+												<li>
+													<a href="gallery-extended.html">Gallery Extended</a>
+													<ul>
+														<li>
+															<a href="gallery-extended.html">1 column</a>
+														</li>
+														<li>
+															<a href="gallery-extended-2-cols.html">2 columns</a>
+														</li>
+														<li>
+															<a href="gallery-extended-3-cols.html">3 columns</a>
+														</li>
+													</ul>
+												</li>
+												<!-- eof Gallery extended -->
+
+												<!-- Gallery carousel -->
+												<li>
+													<a href="gallery-carousel.html">Gallery Carousel</a>
+													<ul>
+														<li>
+															<a href="gallery-carousel.html">1 column</a>
+														</li>
+														<li>
+															<a href="gallery-carousel-2-cols.html">2 columns</a>
+														</li>
+														<li>
+															<a href="gallery-carousel-3-cols.html">3 columns</a>
+														</li>
+													</ul>
+												</li>
+												<!-- eof Gallery carousel -->
+
+												<!-- Gallery tile -->
+												<li>
+													<a href="gallery-tile.html">Gallery Tile</a>
+												</li>
+												<!-- eof Gallery tile -->
+
+												<!-- Gallery left sidebar -->
+												<li>
+													<a href="gallery-left.html">Gallery Left Sidebar</a>
+													<ul>
+														<li>
+															<a href="gallery-left.html">1 column</a>
+														</li>
+														<li>
+															<a href="gallery-left-2-cols.html">2 columns</a>
+														</li>
+													</ul>
+												</li>
+												<!-- eof Gallery left sidebar -->
+
+												<!-- Gallery right sidebar -->
+												<li>
+													<a href="gallery-right.html">Gallery Right Sidebar</a>
+													<ul>
+														<li>
+															<a href="gallery-right.html">1 column</a>
+														</li>
+														<li>
+															<a href="gallery-right-2-cols.html">2 columns</a>
+														</li>
+													</ul>
+												</li>
+												<!-- eof Gallery right sidebar -->
+
+												<!-- Gallery item -->
+												<li>
+													<a href="gallery-single.html">Gallery Item</a>
+													<ul>
+														<li>
+															<a href="gallery-single.html">Style 1</a>
+														</li>
+														<li>
+															<a href="gallery-single2.html">Style 2</a>
+														</li>
+														<li>
+															<a href="gallery-single3.html">Style 3</a>
+														</li>
+													</ul>
+												</li>
+												<!-- eof Gallery item -->
+											</ul>
+										</li>
+										<!-- eof Gallery -->
+
+										<!-- blog -->
+										<li>
+											<a href="blog-right.html">Blog</a>
+											<ul>
+
+												<li>
+													<a href="blog-right.html">Right Sidebar</a>
+												</li>
+												<li>
+													<a href="blog-left.html">Left Sidebar</a>
+												</li>
+												<li>
+													<a href="blog-full.html">No Sidebar</a>
+												</li>
+												<li>
+													<a href="blog-mosaic.html">Blog Grid</a>
+												</li>
+
+												<li>
+													<a href="blog-single-right.html">Post</a>
+													<ul>
+														<li>
+															<a href="blog-single-right.html">Right Sidebar</a>
+														</li>
+														<li>
+															<a href="blog-single-left.html">Left Sidebar</a>
+														</li>
+														<li>
+															<a href="blog-single-full.html">No Sidebar</a>
+														</li>
+													</ul>
+												</li>
+
+												<li>
+													<a href="blog-single-video-right.html">Video Post</a>
+													<ul>
+														<li>
+															<a href="blog-single-video-right.html">Right Sidebar</a>
+														</li>
+														<li>
+															<a href="blog-single-video-left.html">Left Sidebar</a>
+														</li>
+														<li>
+															<a href="blog-single-video-full.html">No Sidebar</a>
+														</li>
+													</ul>
+												</li>
+
+											</ul>
+										</li>
+										<!-- eof blog -->
+
+										<!-- contacts -->
+										<li>
+											<a href="contact.html">Contact</a>
+											<ul>
+												<li>
+													<a href="contact.html">Contact 1</a>
+												</li>
+												<li>
+													<a href="contact2.html">Contact 2</a>
+												</li>
+												<li>
+													<a href="contact3.html">Contact 3</a>
+												</li>
+												<li>
+													<a href="contact4.html">Contact 4</a>
+												</li>
+											</ul>
+										</li>
+										<!-- eof contacts -->
+									</ul>
+								</nav>
+								<!-- eof main nav -->
+								<!-- header toggler -->
+								<span class="toggle_menu">
+									<span></span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<section class="ds black section_padding_top_5 section_padding_bottom_5 section_bottom_overlap">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-6 text-sm-center text-md-left">
+							<div class="media small-teaser teaser inline-block text-left">
+								<div class="media-left media-middle">
+									<div class="teaser_icon highlight2 size_normal">
+										<i class="fa fa-phone"></i>
+									</div>
+								</div>
+								<div class="media-body media-middle grey">
+									<span class="small-text">Call Us Today:</span>
+									<br>
+									<span class="fontsize_20 bold">+8 (800) 678 2569</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 text-sm-center text-md-left">
+							<div class="media small-teaser teaser inline-block text-left">
+								<div class="media-left media-middle">
+									<div class="teaser_icon highlight2 size_normal">
+										<i class="fa fa-map-marker"></i>
+									</div>
+								</div>
+								<div class="media-body media-middle grey">
+									<span class="small-text">Our location:</span>
+									<br>
+									<span class="fontsize_20 bold">169 Adams Ave, Miami</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-0 text-sm-center text-md-left">
+							<div class="media small-teaser teaser inline-block text-left">
+								<div class="media-left media-middle">
+									<div class="teaser_icon highlight2 size_normal">
+										<i class="fa fa-clock-o"></i>
+									</div>
+								</div>
+								<div class="media-body media-middle grey">
+									<span class="small-text">Open hours:</span>
+									<br>
+									<span class="fontsize_20 bold">Mon - Sat 8 am - 6 pm</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="intro_section page_mainslider ds">
+				<div class="flexslider" data-nav="false">
+					<ul class="slides">
+
+						<li>
+							<img src="images/slide01.jpg" alt="">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<div class="slide_description_wrapper">
+											<div class="slide_description">
+												<div class="intro-layer" data-animation="fadeInUp">
+													<h2>
+														For People Who Love
+														<br> Their Home
+													</h2>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<p>Comfort+ first opened its doors in 2006, in Miami, Florida. Since our inception, we have orked meticulously to improve both our internal processes and our outward appearance.</p>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<a href="about.html" class="theme_button color1">More Information</a>
+												</div>
+											</div>
+											<!-- eof .slide_description -->
+										</div>
+										<!-- eof .slide_description_wrapper -->
+									</div>
+									<!-- eof .col-* -->
+								</div>
+								<!-- eof .row -->
+							</div>
+							<!-- eof .container -->
+						</li>
+
+						<li>
+							<img src="images/slide01.jpg" alt="">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<div class="slide_description_wrapper">
+											<div class="slide_description">
+												<div class="intro-layer" data-animation="fadeInUp">
+													<h2>
+														Quality Doesn’t Have
+														<br> To Be Expensive
+													</h2>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<p>Comfort+ first opened its doors in 2006, in Miami, Florida. Since our inception, we have orked meticulously to improve both our internal processes and our outward appearance.</p>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<a href="about.html" class="theme_button color1">More Information</a>
+												</div>
+											</div>
+											<!-- eof .slide_description -->
+										</div>
+										<!-- eof .slide_description_wrapper -->
+									</div>
+									<!-- eof .col-* -->
+								</div>
+								<!-- eof .row -->
+							</div>
+							<!-- eof .container -->
+						</li>
+
+						<li>
+							<img src="images/slide01.jpg" alt="">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<div class="slide_description_wrapper">
+											<div class="slide_description">
+												<div class="intro-layer" data-animation="fadeInUp">
+													<h2>
+														Furniture Inspired By
+														<br> Innovation
+													</h2>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<p>Comfort+ first opened its doors in 2006, in Miami, Florida. Since our inception, we have orked meticulously to improve both our internal processes and our outward appearance.</p>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<a href="about.html" class="theme_button color1">More Information</a>
+												</div>
+											</div>
+											<!-- eof .slide_description -->
+										</div>
+										<!-- eof .slide_description_wrapper -->
+									</div>
+									<!-- eof .col-* -->
+								</div>
+								<!-- eof .row -->
+							</div>
+							<!-- eof .container -->
+						</li>
+
+					</ul>
+				</div>
+				<!-- eof flexslider -->
+
+			</section>
+
+			<section id="about" class="ls section_padding_100">
+				<div class="container">
+					<div class="row display_table_md">
+						<div class="col-md-6 text-center display_table_cell_md">
+							<img src="images/about.png" alt="" />
+						</div>
+						<div class="col-md-6 display_table_cell_md">
+							<h2 class="section_header">
+								Why You Should Choose Us?
+							</h2>
+							<hr class="divider_30_2 main_bg_color2">
+							<p class="medium">
+					Drumstick pastrami picanha kevin, pork chop shoulder andouille ground round pancetta fatback.
+				</p>
+							<p>
+					Chuck pastrami shank prosciutto, turkey salami capicola venison tri-tip jowl. Sausage cupim beef, meatball landjaeger ball tip kielbasa bacon jerky porchetta venison tri-tip cow ham shank. Cupim bresaola drumstick, pork belly biltong shoulder strip steak frankfurter bacon short loin. Pork loin chicken ground round, ham hock meatball drumstick t-bone.
+				</p>
+							<div class="row regular">
+								<div class="col-sm-6">
+									<ul class="list2">
+										<li>Pleasant Staff</li>
+										<li>Convenient Location</li>
+										<li>Non-standard Offers</li>
+									</ul>
+								</div>
+								<div class="col-sm-6">
+									<ul class="list2">
+										<li>Pleasant Staff</li>
+										<li>Convenient Location</li>
+										<li>Non-standard Offers</li>
+									</ul>
+								</div>
+							</div>
+							<a href="about.html" class="theme_button color2">Read more</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="products" class="ls ms section_padding_100">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="section_header">
+								Our Products
+							</h2>
+							<hr class="divider_30_2 main_bg_color2">
+							<p>
+					Leberkas turkey kielbasa, alcatra cupim ball tip pig biltong shank salami. Chuck fatback jerky t-bone hamburger salami swine chicken cupim pork ribeye tenderloin brisket. 
+				</p>
+
+							<div class="owl-carousel topmargin_60" data-nav="true" data-dots="false" data-responsive-lg="3" data-loop="true" data-margin="60">
+								<article class="vertical-item product-item">
+									<div class="item-media bottommargin_30">
+										<img src="images/products/bedroom.png" alt="" />
+									</div>
+									<div class="item-content">
+										<h4>
+											<a href="service-single.html">Bedroom Furniture</a>
+										</h4>
+										<p>
+								Bacon meatloaf cupim, t-bone short loin spare ribs alcatra swine andouille. Pork chop landjaeger andouille boudin ball tip 
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item product-item">
+									<div class="item-media bottommargin_30">
+										<img src="images/products/kitchen.png" alt="" />
+									</div>
+									<div class="item-content">
+										<h4>
+											<a href="service-single.html">Kitchen Furniture</a>
+										</h4>
+										<p>
+								Frankfurter sirloin drumstick turducken, spare ribs venison cow salami burgdoggen tongue shoulder fatback chicken jerky biltong.
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item product-item">
+									<div class="item-media bottommargin_30">
+										<img src="images/products/hall.png" alt="" />
+									</div>
+									<div class="item-content">
+										<h4>
+											<a href="service-single.html">Hall Furniture</a>
+										</h4>
+										<p>
+								Chicken tenderloin swine, turducken pastrami shoulder alcatra short ribs pork ham shan. Salami shank turducken t-bone
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item product-item">
+									<div class="item-media bottommargin_30">
+										<img src="images/products/dining.png" alt="" />
+									</div>
+									<div class="item-content">
+										<h4>
+											<a href="service-single.html">Dining Room furniture</a>
+										</h4>
+										<p>
+								Ham jerky in pastrami, andouille ham hock nisi ut pig ground round pork chop sint kevin porchetta in ut non, labore rump 
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item product-item">
+									<div class="item-media bottommargin_30">
+										<img src="images/products/bathroom.png" alt="" />
+									</div>
+									<div class="item-content">
+										<h4>
+											<a href="service-single.html">Bathroom Furniture</a>
+										</h4>
+										<p>
+								Pancetta jerky porchetta chicken, doner capicola venison pork chop pastrami tail tongue meatball ground round filet mignon. 
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item product-item">
+									<div class="item-media bottommargin_30">
+										<img src="images/products/nursery.png" alt="" />
+									</div>
+									<div class="item-content">
+										<h4>
+											<a href="service-single.html">Nursery Furniture</a>
+										</h4>
+										<p>
+								Chuck landjaeger drumstick spare ribs sausage ground round porchetta pork swine meatloaf shank kevin. Prosciutto shankle picanha
+							</p>
+									</div>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="faq" class="ls overflow_hidden half_section section_padding_top_150 section_padding_bottom_150 columns_padding_80">
+				<div class="image_cover image_cover_left">
+					<!-- you can put your image here instead of puting it in column-->
+					<!-- <img src="img/parallax/half_image.jpg" alt=""> -->
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6">
+							<img src="images/half_image.jpg" alt="">
+						</div>
+						<!-- .col-* -->
+						<div class="col-md-6">
+
+							<h2 class="section_header">
+								Frequently Asked Questions
+							</h2>
+							<hr class="divider_30_2 main_bg_color2">
+							<p>
+					T-bone frankfurter prosciutto bacon ribeye ham hock doner rump chicken ground round landjaeger shankle pancetta. 
+				</p>
+
+							<div class="panel-group" id="accordion1">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion1" href="index.html#collapse1">
+												<i class="fa fa-comment"></i>
+												what's trending in furniture for the fast approaching 2017?
+											</a>
+										</h4>
+									</div>
+									<div id="collapse1" class="panel-collapse collapse in">
+										<div class="panel-body">
+											Biltong bacon pancetta corned beef filet mignon andouille cow burgdoggen. Pork chop beef ball tip shank, brisket kielbasa turkey andouille biltong alcatra filet mignon. Swine rump meatloaf pork alcatra strip steak turducken.
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion1" href="index.html#collapse2" class="collapsed">
+												<i class="fa fa-comment"></i>
+												what are 5 ways to boost workplace productivity?
+											</a>
+										</h4>
+									</div>
+									<div id="collapse2" class="panel-collapse collapse">
+										<div class="panel-body">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facere doloremque ut dolores laudantium nihil at, repudiandae est numquam fuga tempora totam sequi quidem saepe officiis sint beatae, magni fugit.
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion1" href="index.html#collapse3" class="collapsed">
+												<i class="fa fa-comment"></i>
+												what loft remodel in downtown miami?
+											</a>
+										</h4>
+									</div>
+									<div id="collapse3" class="panel-collapse collapse">
+										<div class="panel-body">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. At nobis omnis delectus, asperiores quo obcaecati et iste corporis necessitatibus tempora aspernatur doloribus. Ut deleniti commodi dicta distinctio sit enim quidem!
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<!-- .col-* -->
+
+
+					</div>
+				</div>
+
+			</section>
+
+
+			<section id="team" class="ls ms section_padding_top_130 section_padding_bottom_130">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="section_header">
+								Our Team of Professionals
+							</h2>
+							<hr class="divider_30_2 main_bg_color2">
+							<p>
+					Picanha spare ribs pariatur velit pork sirloin. Consequat capicola pastrami non, minim ribeye meatloaf consectetur pork loin ground round bacon quis t-bone labore.
+				</p>
+
+							<div class="owl-carousel team-carousel topmargin_60" data-nav="true" data-dots="false" data-responsive-lg="3" data-loop="true" data-margin="60">
+								<article class="vertical-item">
+									<div class="item-media bottommargin_40">
+										<img src="images/team/01.jpg" alt="" class="round" />
+									</div>
+									<div class="item-content">
+										<h4 class="bottommargin_0">
+											<a href="service-single.html">Beatrice Rose</a>
+										</h4>
+										<p class="small-text highlight2">director</p>
+										<p>
+								Sausage ground round salami leberkas. Meatloaf jerky sausage ball tip turkey pork belly. Sausage pork chop cow.
+							</p>
+										<p class="greylinks">
+								<a class="social-icon soc-facebook" href="index.html#" title="Facebook"></a>
+								<a class="social-icon soc-twitter" href="index.html#" title="Twitter"></a>
+								<a class="social-icon soc-google" href="index.html#" title="Google"></a>
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item">
+									<div class="item-media bottommargin_40">
+										<img src="images/team/02.jpg" alt="" class="round" />
+									</div>
+									<div class="item-content">
+										<h4 class="bottommargin_0">
+											<a href="service-single.html">Ruby Ruiz</a>
+										</h4>
+										<p class="small-text highlight2">manager</p>
+										<p>Meatloaf alcatra porchetta ground round turducken shankle swine cow beef, strip steak hamburger picanha frank.</p>
+										<p class="greylinks">
+								<a class="social-icon soc-facebook" href="index.html#" title="Facebook"></a>
+								<a class="social-icon soc-twitter" href="index.html#" title="Twitter"></a>
+								<a class="social-icon soc-google" href="index.html#" title="Google"></a>
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item">
+									<div class="item-media bottommargin_40">
+										<img src="images/team/03.jpg" alt="" class="round" />
+									</div>
+									<div class="item-content">
+										<h4 class="bottommargin_0">
+											<a href="service-single.html">Lucy Garrett</a>
+										</h4>
+										<p class="small-text highlight2">designer</p>
+										<p>Ribeye hamburger cow turducken andouille. Brisket sausage pork belly frankfurter. Tenderloin filet mignon pork belly.</p>
+										<p class="greylinks">
+								<a class="social-icon soc-facebook" href="index.html#" title="Facebook"></a>
+								<a class="social-icon soc-twitter" href="index.html#" title="Twitter"></a>
+								<a class="social-icon soc-google" href="index.html#" title="Google"></a>
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item">
+									<div class="item-media bottommargin_40">
+										<img src="images/team/04.jpg" alt="" class="round" />
+									</div>
+									<div class="item-content">
+										<h4 class="bottommargin_0">
+											<a href="service-single.html">Olivia Hopkins</a>
+										</h4>
+										<p class="small-text highlight2">seller</p>
+										<p>Chicken sirloin bresaola turducken ham hock drumstick frankfurter ribeye beef ribs alcatra andouille pork chop cupim. </p>
+										<p class="greylinks">
+								<a class="social-icon soc-facebook" href="index.html#" title="Facebook"></a>
+								<a class="social-icon soc-twitter" href="index.html#" title="Twitter"></a>
+								<a class="social-icon soc-google" href="index.html#" title="Google"></a>
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item">
+									<div class="item-media bottommargin_40">
+										<img src="images/team/05.jpg" alt="" class="round" />
+									</div>
+									<div class="item-content">
+										<h4 class="bottommargin_0">
+											<a href="service-single.html">Edna Jensen</a>
+										</h4>
+										<p class="small-text highlight2">manager</p>
+										<p>Pork loin rump hamburger turkey sausage ham hock beef ribs strip steak capicola chuck kevin leberkas drumstick pork chop. </p>
+										<p class="greylinks">
+								<a class="social-icon soc-facebook" href="index.html#" title="Facebook"></a>
+								<a class="social-icon soc-twitter" href="index.html#" title="Twitter"></a>
+								<a class="social-icon soc-google" href="index.html#" title="Google"></a>
+							</p>
+									</div>
+								</article>
+
+								<article class="vertical-item">
+									<div class="item-media bottommargin_40">
+										<img src="images/team/06.jpg" alt="" class="round" />
+									</div>
+									<div class="item-content">
+										<h4 class="bottommargin_0">
+											<a href="service-single.html">Mike Oliver</a>
+										</h4>
+										<p class="small-text highlight2">seller</p>
+										<p>Pastrami brisket pork belly, andouille corned beef turducken beef ribs drumstick leberkas ball tip prosciutto kielbasa boudin.</p>
+										<p class="greylinks">
+								<a class="social-icon soc-facebook" href="index.html#" title="Facebook"></a>
+								<a class="social-icon soc-twitter" href="index.html#" title="Twitter"></a>
+								<a class="social-icon soc-google" href="index.html#" title="Google"></a>
+							</p>
+									</div>
+								</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="call_back" class="ds page_contact2 parallax section_padding_100">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="section_header">
+								Request a Call Back
+							</h2>
+							<hr class="divider_30_2 main_bg_color2">
+
+							<form class="contact-form row columns_margin_bottom_20 topmargin_60" method="post" action="index.html">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="consultation-name">Full Name
+											<span class="required">*</span>
+										</label>
+										<i class="fa fa-user highlight2" aria-hidden="true"></i>
+										<input type="text" aria-required="true" size="30" value="" name="consultation-name" id="consultation-name" class="form-control" placeholder="Full Name">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="consultation-phone">Phone Number
+											<span class="required">*</span>
+										</label>
+										<i class="fa fa-phone highlight2" aria-hidden="true"></i>
+										<input type="text" aria-required="true" size="30" value="" name="consultation-phone" id="consultation-phone" class="form-control" placeholder="Phone Number">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="consultation-email">Phone Number
+											<span class="required">*</span>
+										</label>
+										<i class="fa fa-envelope highlight2" aria-hidden="true"></i>
+										<input type="email" aria-required="true" size="30" value="" name="consultation-email" id="consultation-email" class="form-control" placeholder="Email Address">
+									</div>
+								</div>
+
+								<div class="col-sm-12">
+
+									<div class="form-group">
+										<label for="consultation-message">Message</label>
+										<i class="fa fa-flag highlight2" aria-hidden="true"></i>
+										<textarea aria-required="true" rows="4" cols="45" name="consultation-message" id="consultation-message" class="form-control" placeholder="Message"></textarea>
+									</div>
+								</div>
+
+								<div class="col-sm-12 bottommargin_0">
+
+									<div class="contact-form-submit topmargin_10">
+										<button type="submit" id="consultation-submit" name="contact_submit" class="theme_button color1 wide_button">Send now</button>
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="review" class="ls section_padding_top_150 section_padding_bottom_150">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1 text-center">
+
+							<h2 class="section_header">
+								Testimonials
+							</h2>
+							<hr class="divider_30_2 main_bg_color2">
+
+							<div class="owl-carousel testimonials-owl-content topmargin_60" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1" data-loop="true" data-margin="20" data-dots="false" data-nav="true">
+								<blockquote class="with_quotes">
+									Picanha rump sausage swine hamburger strip steak filet mignon. Chicken meatball jerky bacon pastrami cow brisket rump. Flank shankle porchetta tenderloin, capicola bacon tail andouille shoulder cow kielbasa chuck bresaola biltong.
+								</blockquote>
+
+								<blockquote class="with_quotes">
+									Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Nullam ultrices quam est, ac fringilla ante egestas sed. Proin ac cursus odio, sit amet pellentesque enim.
+								</blockquote>
+
+								<blockquote class="with_quotes">
+									Donec et porttitor mauris, sit amet volutpat nunc. Nunc tincidunt et sem venenatis placerat. Donec sit amet interdum massa, vel blandit mi. Praesent consequat enim quis lacus tristique, a vulputate nisl pulvinar.
+								</blockquote>
+
+							</div>
+
+							<div class="owl-carousel testimonials-owl-dots topmargin_20" data-responsive-lg="3" data-responsive-md="3" data-responsive-sm="3" data-responsive-xs="3" data-center="true" data-loop="true" data-margin="30" data-touch-drag="false" data-mouse-drag="false">
+								<div>
+									<img src="images/faces/01.jpg" alt="" />
+									<div class="item-meta">
+										<h4 class="bottommargin_0">Miguel Nguyen</h4>
+										<p class="small-text highlight2">Client</p>
+									</div>
+								</div>
+
+								<div>
+									<img src="images/faces/02.jpg" alt="" />
+									<div class="item-meta">
+										<h4 class="bottommargin_0">Lucy Garrett</h4>
+										<p class="small-text highlight2">Client</p>
+									</div>
+								</div>
+
+								<div>
+									<img src="images/faces/03.jpg" alt="" />
+									<div class="item-meta">
+										<h4 class="bottommargin_0">Olivia Hopkins</h4>
+										<p class="small-text highlight2">Client</p>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="blog" class="ls ms section_padding_top_150 section_padding_bottom_130">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="section_header">
+								Our Blog
+							</h2>
+							<hr class="divider_30_2 main_bg_color2">
+							<p>
+					Picanha spare ribs pariatur velit pork sirloin. Consequat capicola pastrami non, minim ribeye meatloaf consectetur pork loin ground round bacon quis t-bone labore.
+				</p>
+						</div>
+					</div>
+					<div class="row columns_margin_bottom_20 topmargin_60">
+						<div class="col-md-4 col-sm-6">
+							<article class="vertical-item content-padding with_background text-center overflow-hidden">
+								<div class="item-media">
+									<img src="images/gallery/05.jpg" alt="">
+
+									<div class="media-links">
+										<a href="blog-single-left.html" class="abs-link"></a>
+									</div>
+
+								</div>
+								<div class="item-content">
+									<span class="entry-date small-text highlight2">
+										<time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+											June 12, 2017
+										</time>
+									</span>
+									<h4 class="entry-title">
+										<a href="blog-single-left.html">Cupim bacon short ribs picanha</a>
+									</h4>
+									<p>Strip steak bacon boudin biltong swine ham. Sausage turkey frankfurter tri-tip pancetta ground round ball tip.</p>
+									<a href="blog-single-left.html" class="theme_button color1 topmargin_10">Read more</a>
+								</div>
+							</article>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<article class="vertical-item content-padding with_background text-center overflow-hidden">
+								<div class="item-media">
+									<img src="images/gallery/06.jpg" alt="">
+
+									<div class="media-links">
+										<a href="blog-single-left.html" class="abs-link"></a>
+									</div>
+
+								</div>
+								<div class="item-content">
+									<span class="entry-date small-text highlight2">
+										<time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+											June 12, 2017
+										</time>
+									</span>
+									<h4 class="entry-title">
+										<a href="blog-single-left.html">Swine short loin boud spare ribs capi</a>
+									</h4>
+									<p>Tri-tip bacon salami pork chop pork loin leberkas ham hock venison pork belly prosciutto pancetta.</p>
+									<a href="blog-single-left.html" class="theme_button color1 topmargin_10">Read more</a>
+								</div>
+							</article>
+						</div>
+						<div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-0">
+							<article class="vertical-item content-padding with_background text-center overflow-hidden">
+								<div class="item-media">
+									<img src="images/gallery/07.jpg" alt="">
+
+									<div class="media-links">
+										<a href="blog-single-left.html" class="abs-link"></a>
+									</div>
+
+								</div>
+								<div class="item-content">
+									<span class="entry-date small-text highlight2">
+										<time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+											June 12, 2017
+										</time>
+									</span>
+									<h4 class="entry-title">
+										<a href="blog-single-left.html">Ham venison spare ribs strip steak</a>
+									</h4>
+									<p>Shankle boudin pork loin, t-bone pastrami jerky beef. Filet mignon strip steak
+ doner meatball, porchetta biltong.</p>
+									<a href="blog-single-left.html" class="theme_button color1 topmargin_10">Read more</a>
+								</div>
+							</article>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<section id="map" class="ls ms" data-address="Rosebery House, 70 Rosebery Ave, Clerkenwell, London EC1R 4RR, UK">
+				<!-- marker description and marker icon goes here -->
+				<div class="map_marker_description">
+					<h3>Map Title</h3>
+					<p>Map description text</p>
+					<img class="map_marker_icon" src="images/map_marker_icon.png" alt="">
+				</div>
+			</section>
+
+			<section class="cs main_color2 section_padding_top_5 section_padding_bottom_5">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-6 text-center text-md-right">
+							<div class="media small-teaser teaser inline-block text-left black">
+								<div class="media-left media-middle">
+									<div class="teaser_icon highlight size_normal">
+										<i class="fa fa-phone"></i>
+									</div>
+								</div>
+								<div class="media-body media-middle">
+									<span class="small-text">Call Us Today:</span>
+									<br>
+									<span class="fontsize_20 bold">+8 (800) 678 2569</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 text-center text-md-right">
+							<div class="media small-teaser teaser inline-block text-left black">
+								<div class="media-left media-middle">
+									<div class="teaser_icon highlight size_normal">
+										<i class="fa fa-map-marker"></i>
+									</div>
+								</div>
+								<div class="media-body media-middle">
+									<span class="small-text">Our location:</span>
+									<br>
+									<span class="fontsize_20 bold">169 Adams Ave, Miami</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-0 text-center text-md-right">
+							<div class="media small-teaser teaser inline-block text-left black">
+								<div class="media-left media-middle">
+									<div class="teaser_icon highlight size_normal">
+										<i class="fa fa-clock-o"></i>
+									</div>
+								</div>
+								<div class="media-body media-middle">
+									<span class="small-text">Open hours:</span>
+									<br>
+									<span class="fontsize_20 bold">Mon - Sat 8 am - 6 pm</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<footer class="page_footer ds section_padding_top_100 section_padding_bottom_65 columns_padding_25">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-4 col-sm-12">
+							<div class="widget">
+								<a href="index.html" class="logo top_logo bottommargin_20">
+									<img src="images/logo.png" alt="">
+									<span class="logo_text">
+										<span class="big">Comfort
+											<span class="highlight2">+</span>
+										</span>
+										<span class="small-text lightgrey">Furniture company</span>
+									</span>
+								</a>
+								<p class="grey">
+						Hamburger short loin pastrami ribeye, doner land andouille pork loin short ribs ham hock hant pig prosciut swine biltong meatloaf.
+					</p>
+								<div>
+									<div class="media small-teaser inline-block">
+										<div class="media-left media-middle">
+											<i class="fa fa-map-marker highlight2" aria-hidden="true"></i>
+										</div>
+										<div class="media-body media-middle">
+											253 Adams Ave, Iowa
+										</div>
+									</div>
+									<br>
+									<div class="media small-teaser inline-block">
+										<div class="media-left media-middle">
+											<i class="fa fa-phone highlight2" aria-hidden="true"></i>
+										</div>
+										<div class="media-body media-middle">
+											8 800 269 8469
+										</div>
+									</div>
+									<br>
+									<div class="media small-teaser inline-block">
+										<div class="media-left media-middle">
+											<i class="fa fa-envelope highlight2" aria-hidden="true"></i>
+										</div>
+										<div class="media-body media-middle darklinks underlined-links">
+											<a href="index.html#"><span class="__cf_email__" data-cfemail="beddd1d3d8d1ccca95fecdcbceced1ccca90ddd1d3">[email&#160;protected]</span></a>
+										</div>
+									</div>
+									<div class="media small-teaser inline-block">
+										<div class="media-left media-middle">
+											<i class="fa fa-internet-explorer highlight2" aria-hidden="true"></i>
+										</div>
+										<div class="media-body media-middle greylinks">
+											<a href="index.html#">www.comfort_plus.com</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-6">
+							<div class="widget widget_recent_posts topmargin_20">
+
+								<h3 class="widget-title">Recent Posts</h3>
+
+								<ul class="media-list">
+									<li class="media">
+										<div class="media-left media-middle">
+											<img src="images/recent_post1.jpg" alt="" />
+										</div>
+										<div class="media-body media-middle">
+											<h4>
+												<a href="blog-single-left.html">
+										Tail cupim officia short loin frankfurter alcatra 
+									</a>
+											</h4>
+											<span class="entry-date highlight2 small-text">
+												<time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+													March 12, 2017
+												</time>
+											</span>
+										</div>
+									</li>
+
+									<li class="media">
+										<div class="media-left media-middle">
+											<img src="images/recent_post2.jpg" alt="" />
+										</div>
+										<div class="media-body media-middle">
+											<h4>
+												<a href="blog-single-left.html">
+										Biltong venison beef swine. Corned beef pork ham
+									</a>
+											</h4>
+											<span class="entry-date highlight2 small-text">
+												<time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+													March 13, 2017
+												</time>
+											</span>
+										</div>
+									</li>
+
+									<li class="media">
+										<div class="media-left media-middle">
+											<img src="images/recent_post3.jpg" alt="" />
+										</div>
+										<div class="media-body media-middle">
+											<h4>
+												<a href="blog-single-left.html">
+										Prosciutto hamburger filet mignon
+									</a>
+											</h4>
+											<span class="entry-date highlight2 small-text">
+												<time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+													March 14, 2017
+												</time>
+											</span>
+										</div>
+									</li>
+
+
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-6">
+
+							<div class="widget widget_mailchimp topmargin_20">
+
+								<h3 class="widget-title">Subscribe</h3>
+
+								<form class="signup" action="index.html" method="get">
+									<div class="form-group">
+										<input name="email" type="email" class="mailchimp_email form-control" placeholder="Email Address">
+									</div>
+									<button type="submit" class="theme_button color1">Send</button>
+									<div class="response"></div>
+									<p>
+							Enter Email here to be updated. We promise not to send you spam!
+						</p>
+
+								</form>
+
+								<div class="darklinks topmargin_30">
+									<a href="index.html#" class="social-icon border-icon soc-facebook"></a>
+									<a href="index.html#" class="social-icon border-icon soc-twitter"></a>
+									<a href="index.html#" class="social-icon border-icon soc-google"></a>
+									<a href="index.html#" class="social-icon border-icon soc-youtube"></a>
+								</div>
+
+							</div>
+
+
+						</div>
+
+					</div>
+				</div>
+			</footer>
+
+			<section class="ds page_copyright section_padding_15 with_top_border_container">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<p class="small-text grey">&copy; Copyright 2017 All Rights Reserved</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+		<!-- eof #box_wrapper -->
+	</div>
+	<!-- eof #canvas -->
+
+	<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/compressed.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/switcher.js"></script>
+
+	<!-- Google Map Script -->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0pr5xCHpaTGv12l73IExOHDJisBP2FK4"></script>
+</body>
+
+</html>
