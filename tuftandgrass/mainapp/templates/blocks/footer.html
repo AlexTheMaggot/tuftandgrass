@@ -1,0 +1,132 @@
+{% load static %}
+<footer class="page_footer ds section_padding_top_100 section_padding_bottom_65 columns_padding_25">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="widget">
+                    {% if '/en/' in request.path %}
+                        <a href="{% url 'mainapp_en:index' %}" class="logo top_logo bottommargin_20"><img src="{% static 'images/logo.png' %}" alt=""></a>
+                        <p class="grey">{{ footer.description_en }}</p>
+                    {% elif '/uz/' in request.path %}
+                        <a href="{% url 'mainapp_uz:index' %}" class="logo top_logo bottommargin_20"><img src="{% static 'images/logo.png' %}" alt=""></a>
+                        <p class="grey">{{ footer.description_uz }}</p>
+                    {% else %}
+                        <a href="{% url 'mainapp:index' %}" class="logo top_logo bottommargin_20"><img src="{% static 'images/logo.png' %}" alt=""></a>
+                        <p class="grey">{{ footer.description_ru }}</p>
+                    {% endif %}
+                    <div>
+                        <div class="media small-teaser inline-block">
+                            <div class="media-left media-middle">
+                                <i class="fa fa-map-marker highlight2" aria-hidden="true"></i>
+                            </div>
+                            {% if '/en/' in request.path %}
+                                <div class="media-body media-middle">{{ footer.address_en }}</div>
+                            {% elif '/uz/' in request.path %}
+                                <div class="media-body media-middle">{{ footer.address_uz }}</div>
+                            {% else %}
+                                <div class="media-body media-middle">{{ footer.address_ru }}</div>
+                            {% endif %}
+                        </div>
+                        <br>
+                        <div class="media small-teaser inline-block">
+                            <div class="media-left media-middle">
+                                <i class="fa fa-phone highlight2" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body media-middle">{{ footer.phone }}</div>
+                        </div>
+                        <br>
+                        <div class="media small-teaser inline-block">
+                            <div class="media-left media-middle">
+                                <i class="fa fa-envelope highlight2" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body media-middle darklinks underlined-links">
+                                <a href="mailto:{{ footer.mail }}">{{ footer.mail }}</a>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="media small-teaser inline-block">
+                            <div class="media-left media-middle">
+                                <i class="fa fa-internet-explorer highlight2" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body media-middle greylinks">
+                                <a href="https://{{ footer.website }}">{{ footer.website }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="widget widget_recent_posts topmargin_20">
+                    {% if '/en/' in request.path %}
+                        <h3 class="widget-title">Recent Posts</h3>
+                    {% elif '/uz/' in request.path %}
+                        <h3 class="widget-title">Oxirgi xabarlar</h3>
+                    {% else %}
+                        <h3 class="widget-title">Недавние посты</h3>
+                    {% endif %}
+                    <ul class="media-list">
+                        {% for post in three_posts %}
+                        <li class="media">
+                            <div class="media-left media-middle">
+                                <img src="{{ post.img.url }}" alt="" />
+                            </div>
+                            <div class="media-body media-middle">
+                                <h4>
+                                    {% if '/en/' in request.path %}
+                                        <a href="/">{{ post.title_en }}</a>
+                                    {% elif '/uz/' in request.path %}
+                                        <a href="/">{{ post.title_uz }}</a>
+                                    {% else %}
+                                        <a href="/">{{ post.title_ru }}</a>
+                                    {% endif %}
+                                </h4>
+                                <span class="entry-date highlight2 small-text">
+                                    <time class="entry-date">
+                                        {{ post.date|date:'Y-m-d' }}
+                                    </time>
+                                </span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="widget widget_mailchimp topmargin_20">
+                    {% if '/en/' in request.path %}
+                        <h3 class="widget-title">Subscribe</h3>
+                    {% elif '/uz/' in request.path %}
+                        <h3 class="widget-title">Obuna</h3>
+                    {% else %}
+                        <h3 class="widget-title">Подписка</h3>
+                    {% endif %}
+                    <form class="signup" action="index.html" method="get">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input name="email" type="email" class="mailchimp_email form-control" placeholder="e-mail">
+                        </div>
+                        {% if '/en/' in request.path %}
+                            <button type="submit" class="theme_button color1">Send</button>
+                            <div class="response"></div>
+                            <p>{{ footer.mail_description_en }}</p>
+                        {% elif '/uz/' in request.path %}
+                            <button type="submit" class="theme_button color1">Yuborish</button>
+                            <div class="response"></div>
+                            <p>{{ footer.mail_description_uz }}</p>
+                        {% else %}
+                            <button type="submit" class="theme_button color1">Отправить</button>
+                            <div class="response"></div>
+                            <p>{{ footer.mail_description_ru }}</p>
+                        {% endif %}
+                    </form>
+                    <div class="darklinks topmargin_30">
+                        <a href="{{ footer.facebook }}" class="social-icon border-icon soc-facebook"></a>
+                        <a href="{{ footer.instagram }}" class="social-icon border-icon soc-instagram"></a>
+                        <a href="{{ footer.telegram }}" class="social-icon border-icon soc-telegram"></a>
+                        <a href="{{ footer.youtube }}" class="social-icon border-icon soc-youtube"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
