@@ -1,0 +1,39 @@
+{% load static %}
+<header class="page_header header_white toggler_right">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 display_table">
+                <div class="header_left_logo display_table_cell">
+                    {% if '/en/' in request.path %}
+                        <a href="{% url 'mainapp_en:index' %}" class="logo top_logo"><img src="{{ header.img.url }}" alt=""></a>
+                    {% elif '/uz/' in request.path %}
+                        <a href="{% url 'mainapp_uz:index' %}" class="logo top_logo"><img src="{{ header.img.url }}" alt=""></a>
+                    {% else %}
+                        <a href="{% url 'mainapp:index' %}" class="logo top_logo"><img src="{{ header.img.url }}" alt=""></a>
+                    {% endif %}
+                </div>
+                <div class="header_mainmenu display_table_cell text-right">
+                    <nav class="mainmenu_wrapper">
+                        <ul class="mainmenu nav sf-menu">
+                            <li class="active">
+                                {% if '/en/' in request.path %}
+                                    <a href="{% url 'mainapp_en:index' %}">Home</a>
+                                {% elif '/uz/' in request.path %}
+                                    <a href="{% url 'mainapp_uz:index' %}">Uy</a>
+                                {% else %}
+                                    <a href="{% url 'mainapp:index' %}">Главная</a>
+                                {% endif %}
+                            </li>
+                            <li><a href="/">Рус</a></li>
+                            <li><a href="/uz/">O'z</a></li>
+                            <li><a href="/en/">Eng</a></li>
+                        </ul>
+                    </nav>
+                    <span class="toggle_menu">
+                        <span></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
