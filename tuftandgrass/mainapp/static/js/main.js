@@ -475,9 +475,22 @@ function windowLoadInit() {
 
 		//sending form data to PHP server if fields are not empty
 		var request = $form.serialize();
-		var ajax = jQuery.post( "contact-form.php", request )
+		var data_success, data_false;
+		var ajax = jQuery.post( "/order/", request )
 		.done(function( data ) {
-			jQuery($form).find('[type="submit"]').attr('disabled', false).parent().append('<span class="contact-form-respond highlight">'+data+'</span>');
+			if (window.location.pathname.indexOf('/en/') !== -1) {
+				data_success = 'Your application has been successfully sent'
+				data_false = 'Error'
+			}
+			else if (window.location.pathname.indexOf('/uz/') !== -1) {
+				data_success = 'Sizning arizangiz muvaffaqiyatli yuborildi'
+				data_false = 'Xato'
+			}
+			else {
+				data_success = 'Ваша заявка успешно отправлена'
+				data_false = 'Ошибка'
+			}
+			jQuery($form).find('[type="submit"]').attr('disabled', false).parent().append('<span class="contact-form-respond highlight">' + data_success + '</span>');
 			//cleaning form
 			var $formErrors = $form.find('.form-errors');
 			if ( !$formErrors.length ) {
@@ -485,7 +498,7 @@ function windowLoadInit() {
 			}
 		})
 		.fail(function( data ) {
-			jQuery($form).find('[type="submit"]').attr('disabled', false).parent().append('<span class="contact-form-respond highlight">Mail cannot be sent. You need PHP server to send mail.</span>');
+			jQuery($form).find('[type="submit"]').attr('disabled', false).parent().append('<span class="contact-form-respond highlight">' + data_false + '</span>');
 		})
 	});
 
@@ -536,16 +549,28 @@ function windowLoadInit() {
 	jQuery('.signup').on('submit', function( e ) {
 		e.preventDefault();
 		var $form = jQuery(this);
-		// update user interface
-		$form.find('.response').html('Adding email address...');
-		// Prepare query string and send AJAX request
-		jQuery.ajax({
-			url: 'mailchimp/store-address.php',
-			data: 'ajax=true&email=' + escape($form.find('.mailchimp_email').val()),
-			success: function(msg) {
-				$form.find('.response').html(msg);
+		var request = $form.serialize();
+		var data_success, data_false;
+		var ajax = jQuery.post( "/subscribe/", request )
+		.done(function() {
+			if (window.location.pathname.indexOf('/en/') !== -1) {
+				data_success = 'E-mail added successfully'
+				data_false = 'Error'
 			}
-		});
+			else if (window.location.pathname.indexOf('/uz/') !== -1) {
+				data_success = 'E-mail muvaffaqiyatli qo‘shildi'
+				data_false = 'Xato'
+			}
+			else {
+				data_success = 'E-mail успешно добавлен'
+				data_false = 'Ошибка'
+			}
+			$form.find('.response').html(data_success);
+			//cleaning form
+		})
+		.fail(function( data ) {
+			$form.find('.response').html(data_false);
+		})
 	});
 	
 	//twitter
