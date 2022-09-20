@@ -29,6 +29,15 @@ def index(request):
     return render(request, template, context)
 
 
+def news_list(request):
+    template = 'mainapp/news_list.html'
+    context = {
+        'posts': NewsModel.objects.all().order_by('-date')
+    }
+    context = make_context(context)
+    return render(request, template, context)
+
+
 def order(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
