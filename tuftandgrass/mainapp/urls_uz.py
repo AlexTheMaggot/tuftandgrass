@@ -6,4 +6,5 @@ app_name = 'mainapp_uz'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('news/', views.news_list, name='news_list'),
 ]
