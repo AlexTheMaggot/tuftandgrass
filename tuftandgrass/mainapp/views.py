@@ -44,6 +44,7 @@ def news_detail(request, post_id):
     context = {
         'post': get_object_or_404(NewsModel, id=post_id),
     }
+    context = make_context(context)
     return render(request, template, context)
 
 
