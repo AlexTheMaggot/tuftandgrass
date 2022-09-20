@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+from django_summernote.admin import SummernoteModelAdmin
 
 
 class NoAddNoDelete(admin.ModelAdmin):
@@ -210,7 +211,7 @@ class ReviewAdmin(admin.ModelAdmin):
     )
 
 
-class NewsAdmin(admin.ModelAdmin):
+class NewsAdmin(SummernoteModelAdmin):
     fields = (
         'title_ru',
         'title_en',
@@ -220,6 +221,14 @@ class NewsAdmin(admin.ModelAdmin):
         'description_uz',
         'img',
         'date',
+        'text_ru',
+        'text_en',
+        'text_uz',
+    )
+    summernote_fields = (
+        'text_ru',
+        'text_en',
+        'text_uz',
     )
 
 
