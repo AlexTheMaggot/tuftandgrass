@@ -95,8 +95,8 @@ class NewsListPageModel(models.Model):
     title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
     title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
     description_ru = models.TextField(verbose_name='Описание на русском')
-    description_en = models.TextField(verbose_name='Описание на узбекском')
-    description_uz = models.TextField(verbose_name='Описание на английском')
+    description_en = models.TextField(verbose_name='Описание на английском')
+    description_uz = models.TextField(verbose_name='Описание на узбекском')
 
     def __str__(self):
         return 'Страница списка новостей'
