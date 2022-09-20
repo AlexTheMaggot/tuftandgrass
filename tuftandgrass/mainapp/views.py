@@ -32,7 +32,9 @@ def index(request):
 def news_list(request):
     template = 'mainapp/news_list.html'
     context = {
-        'posts': NewsModel.objects.all().order_by('-date')
+        'posts': NewsModel.objects.all().order_by('-date'),
+        'newspage': NewsListPageModel.objects.first(),
+        'indexpage': IndexPageModel.objects.first(),
     }
     context = make_context(context)
     return render(request, template, context)
