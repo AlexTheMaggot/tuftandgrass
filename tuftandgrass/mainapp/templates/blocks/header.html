@@ -15,18 +15,20 @@
                 <div class="header_mainmenu display_table_cell text-right">
                     <nav class="mainmenu_wrapper">
                         <ul class="mainmenu nav sf-menu">
-                            <li class="active">
                                 {% if '/en/' in request.path %}
-                                    <a href="{% url 'mainapp_en:index' %}">Home</a>
+                                    <li><a href="{% url 'mainapp_en:index' %}">Home</a></li>
+                                    <li><a href="{% url 'mainapp_en:news_list' %}">News</a></li>
                                 {% elif '/uz/' in request.path %}
-                                    <a href="{% url 'mainapp_uz:index' %}">Uy</a>
+                                    <li><a href="{% url 'mainapp_uz:index' %}">Uy</a></li>
+                                    <li><a href="{% url 'mainapp_uz:news_list' %}">Yangiliklari</a></li>
                                 {% else %}
-                                    <a href="{% url 'mainapp:index' %}">Главная</a>
+                                    <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                                    <li><a href="{% url 'mainapp:news_list' %}">Новости</a></li>
                                 {% endif %}
-                            </li>
-                            <li><a href="/">Рус</a></li>
-                            <li><a href="/uz/">O'z</a></li>
-                            <li><a href="/en/">Eng</a></li>
+
+                            <li><a href="/" id="header_language_ru">Рус</a></li>
+                            <li><a href="/" id="header_language_uz">O'z</a></li>
+                            <li><a href="/" id="header_language_en">Eng</a></li>
                         </ul>
                     </nav>
                     <span class="toggle_menu">
