@@ -227,6 +227,9 @@ class NewsModel(models.Model):
     description_uz = models.TextField(verbose_name='Описание на узбекском')
     img = models.ImageField(upload_to='news/', verbose_name='Изображение')
     date = models.DateField(verbose_name='Дата создания')
+    text_ru = models.TextField(verbose_name='Текст на русском')
+    text_en = models.TextField(verbose_name='Текст на английском')
+    text_uz = models.TextField(verbose_name='Текст на узбекском')
 
     def __str__(self):
         return self.title_ru
