@@ -111,6 +111,17 @@ class IndexPageAdmin(NoAddNoDelete):
     )
 
 
+class NewsListPageAdmin(NoAddNoDelete):
+    fields = (
+        'title_ru',
+        'title_en',
+        'title_uz',
+        'description_ru',
+        'description_en',
+        'description_uz',
+    )
+
+
 class IndexPageSlideAdmin(admin.ModelAdmin):
     fields = (
         'img',
@@ -257,6 +268,7 @@ class SubscribeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(IndexPageModel, IndexPageAdmin)
+admin.site.register(NewsListPageModel, NewsListPageAdmin)
 admin.site.register(IndexPageSlideModel, IndexPageSlideAdmin)
 admin.site.register(IndexPageProductModel, IndexPageProductAdmin)
 admin.site.register(IndexPageFAQModel, IndexPageFAQAdmin)
