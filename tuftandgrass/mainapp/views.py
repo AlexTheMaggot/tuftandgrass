@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseForbidden
 from django.core.paginator import Paginator
 from tuftandgrass.config import *
@@ -12,13 +12,13 @@ def make_context(context):
     context['three_posts'] = Paginator(posts, 3).page(1)
     context['header'] = HeaderModel.objects.first()
     context['footer'] = FooterModel.objects.first()
+    context['indexpage'] = IndexPageModel.objects.first()
     return context
 
 
 def index(request):
     template = 'mainapp/index.html'
     context = {
-        'indexpage': IndexPageModel.objects.first(),
         'slides': IndexPageSlideModel.objects.all(),
         'products': IndexPageProductModel.objects.all(),
         'faqs': IndexPageFAQModel.objects.all(),
@@ -34,9 +34,16 @@ def news_list(request):
     context = {
         'posts': NewsModel.objects.all().order_by('-date'),
         'newspage': NewsListPageModel.objects.first(),
-        'indexpage': IndexPageModel.objects.first(),
     }
     context = make_context(context)
+    return render(request, template, context)
+
+
+def news_detail(request, post_id):
+    template = 'mainapp/news_detail.html'
+    context = {
+        'post': get_object_or_404(NewsModel, id=post_id),
+    }
     return render(request, template, context)
 
 
