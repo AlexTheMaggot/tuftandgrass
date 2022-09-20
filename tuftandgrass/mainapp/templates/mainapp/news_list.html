@@ -1,0 +1,111 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{% if '/en/' in request.path %}{{ newspage.title_en }}{% elif '/uz/' in request.path %}{{ newspage.title_uz }}{% else %}{{ newspage.title_ru }}{% endif %}{% endblock %}
+{% block description %}{% if '/en/' in request.path %}{{ newspage.description_en }}{% elif '/uz/' in request.path %}{{ newspage.description_uz }}{% else %}{{ newspage.description_ru }}{% endif %}{% endblock %}
+{% block content %}
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
+	<div id="canvas">
+		<div id="box_wrapper">
+            {% include 'blocks/header.html' %}
+			<section class="page_breadcrumbs ds parallax background_overlay section_padding_top_65 section_padding_bottom_65">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+                            {% if '/en/' in request.path %}
+                                <h2 class="highlight2">News</h2>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="highlight2">Yangiliklar</h2>
+                            {% else %}
+                                <h2 class="highlight2">Новости</h2>
+                            {% endif %}
+							<ol class="breadcrumb darklinks color2">
+                                {% if '/en/' in request.path %}
+                                    <li><a href="{% url 'mainapp_en:index' %}">Home</a></li>
+                                    <li><a href="{% url 'mainapp_en:news_list' %}">News</a></li>
+                                {% elif '/uz/' in request.path %}
+                                    <li><a href="{% url 'mainapp_uz:index' %}">Uy</a></li>
+                                    <li><a href="{% url 'mainapp_uz:news_list' %}">Yangiliklar</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                                    <li><a href="{% url 'mainapp:news_list' %}">Новости</a></li>
+                                {% endif %}
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="ls page_portfolio section_padding_top_100 section_padding_bottom_75">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="isotope_container isotope row masonry-layout columns_margin_bottom_20">
+                                {% for post in posts %}
+                                    <div class="isotope-item col-lg-4 col-md-6 col-sm-12">
+                                        <article class="vertical-item content-padding with_background text-center  overflow-hidden">
+                                            <div class="item-media">
+                                                <img src="{{ post.img.url }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <p class="text-center item-meta">
+                                                    <span class="entry-date highlightlinks">
+                                                        <a href="blog-right.html" rel="bookmark">
+                                                            <time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+                                                                {{ post.date|date:'Y-m-d' }}
+                                                            </time>
+                                                        </a>
+                                                    </span>
+                                                </p>
+                                                <h4 class="entry-title">
+                                                    {% if '/en/' in request.path %}
+                                                        <a href="blog-single-left.html">{{ post.title_en }}</a>
+                                                    {% elif '/uz/' in request.path %}
+                                                        <a href="blog-single-left.html">{{ post.title_uz }}</a>
+                                                    {% else %}
+                                                        <a href="blog-single-left.html">{{ post.title_ru }}</a>
+                                                    {% endif %}
+                                                </h4>
+                                                {% if '/en/' in request.path %}
+                                                    <p class="margin_0">{{ post.description_en }}</p>
+                                                {% elif '/uz/' in request.path %}
+                                                    <p class="margin_0">{{ post.description_uz }}</p>
+                                                {% else %}
+                                                    <p class="margin_0">{{ post.description_ru }}</p>
+                                                {% endif %}
+                                                <a href="blog-single-left.html" class="read-more"></a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+            {% include 'blocks/footer.html' %}
+			<section class="ds page_copyright section_padding_15 with_top_border_container">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+                            {% if '/en/' in request.path %}
+                                <p class="small-text grey">{{ indexpage.copyright_en }}</p>
+                            {% elif '/uz/' in request.path %}
+                                <p class="small-text grey">{{ indexpage.copyright_uz }}</p>
+                            {% else %}
+                                <p class="small-text grey">{{ indexpage.copyright_ru }}</p>
+                            {% endif %}
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<script data-cfasync="false" src="{% static 'js/email-decode.min.js' %}"></script>
+    <script src="{% static 'js/compressed.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/switcher.js' %}"></script>
+{% endblock %}
