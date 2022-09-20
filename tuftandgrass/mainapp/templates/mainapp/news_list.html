@@ -26,13 +26,13 @@
 							<ol class="breadcrumb darklinks color2">
                                 {% if '/en/' in request.path %}
                                     <li><a href="{% url 'mainapp_en:index' %}">Home</a></li>
-                                    <li><a href="{% url 'mainapp_en:news_list' %}">News</a></li>
+                                    <li class="active">News</li>
                                 {% elif '/uz/' in request.path %}
                                     <li><a href="{% url 'mainapp_uz:index' %}">Uy</a></li>
-                                    <li><a href="{% url 'mainapp_uz:news_list' %}">Yangiliklar</a></li>
+                                    <li class="active">Yangiliklar</li>
                                 {% else %}
                                     <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
-                                    <li><a href="{% url 'mainapp:news_list' %}">Новости</a></li>
+                                    <li class="active">Новости</li>
                                 {% endif %}
 							</ol>
 						</div>
@@ -53,7 +53,13 @@
                                             <div class="item-content">
                                                 <p class="text-center item-meta">
                                                     <span class="entry-date highlightlinks">
-                                                        <a href="blog-right.html" rel="bookmark">
+                                                        {% if '/en/' in request.path %}
+                                                            <a href="{% url 'mainapp_en:news_detail' post.id %}" rel="bookmark">
+                                                        {% elif '/uz/' in request.path %}
+                                                            <a href="{% url 'mainapp_uz:news_detail' post.id %}" rel="bookmark">
+                                                        {% else %}
+                                                            <a href="{% url 'mainapp:news_detail' post.id %}" rel="bookmark">
+                                                        {% endif %}
                                                             <time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
                                                                 {{ post.date|date:'Y-m-d' }}
                                                             </time>
@@ -62,21 +68,23 @@
                                                 </p>
                                                 <h4 class="entry-title">
                                                     {% if '/en/' in request.path %}
-                                                        <a href="blog-single-left.html">{{ post.title_en }}</a>
+                                                        <a href="{% url 'mainapp_en:news_detail' post.id %}">{{ post.title_en }}</a>
                                                     {% elif '/uz/' in request.path %}
-                                                        <a href="blog-single-left.html">{{ post.title_uz }}</a>
+                                                        <a href="{% url 'mainapp_uz:news_detail' post.id %}">{{ post.title_uz }}</a>
                                                     {% else %}
-                                                        <a href="blog-single-left.html">{{ post.title_ru }}</a>
+                                                        <a href="{% url 'mainapp:news_detail' post.id %}">{{ post.title_ru }}</a>
                                                     {% endif %}
                                                 </h4>
                                                 {% if '/en/' in request.path %}
                                                     <p class="margin_0">{{ post.description_en }}</p>
+                                                    <a href="{% url 'mainapp_en:news_detail' post.id %}" class="read-more"></a>
                                                 {% elif '/uz/' in request.path %}
                                                     <p class="margin_0">{{ post.description_uz }}</p>
+                                                    <a href="{% url 'mainapp_uz:news_detail' post.id %}" class="read-more"></a>
                                                 {% else %}
                                                     <p class="margin_0">{{ post.description_ru }}</p>
+                                                    <a href="{% url 'mainapp:news_detail' post.id %}" class="read-more"></a>
                                                 {% endif %}
-                                                <a href="blog-single-left.html" class="read-more"></a>
                                             </div>
                                         </article>
                                     </div>
