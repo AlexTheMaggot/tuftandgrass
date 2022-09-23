@@ -286,3 +286,37 @@ class SubscribeModel(models.Model):
     class Meta:
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписка'
+
+
+class CategoryListPageModel(models.Model):
+    title_ru = models.CharField(max_length=200, verbose_name='Заголовок на русском')
+    title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
+    title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
+    description_ru = models.TextField(verbose_name='Описание на русском')
+    description_en = models.TextField(verbose_name='Описание на английском')
+    description_uz = models.TextField(verbose_name='Описание на узбекском')
+
+    def __str__(self):
+        return 'Страница каталога'
+
+    class Meta:
+        verbose_name = 'Страница каталога'
+        verbose_name_plural = 'Страница каталога'
+
+
+class CategoryModel(models.Model):
+    title_ru = models.CharField(max_length=200, verbose_name='Заголовок на русском')
+    title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
+    title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
+    description_ru = models.TextField(verbose_name='Описание на русском')
+    description_en = models.TextField(verbose_name='Описание на английском')
+    description_uz = models.TextField(verbose_name='Описание на узбекском')
+    slug = models.SlugField(verbose_name='URL')
+    img = models.ImageField(upload_to='categories/', verbose_name='Изображение')
+
+    def __str__(self):
+        return self.title_ru
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
