@@ -276,6 +276,31 @@ class SubscribeAdmin(admin.ModelAdmin):
     )
 
 
+class CategoryListPageAdmin(NoAddNoDelete):
+    fields = (
+        'title_ru',
+        'title_en',
+        'title_uz',
+        'description_ru',
+        'description_en',
+        'description_uz',
+    )
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    fields = (
+        'img',
+        'title_ru',
+        'title_en',
+        'title_uz',
+        'description_ru',
+        'description_en',
+        'description_uz',
+        'slug',
+    )
+    prepopulated_fields = {"slug": ("title_en",)}
+
+
 admin.site.register(IndexPageModel, IndexPageAdmin)
 admin.site.register(NewsListPageModel, NewsListPageAdmin)
 admin.site.register(IndexPageSlideModel, IndexPageSlideAdmin)
@@ -288,3 +313,5 @@ admin.site.register(NewsModel, NewsAdmin)
 admin.site.register(HeaderModel, HeaderAdmin)
 admin.site.register(FooterModel, FooterAdmin)
 admin.site.register(SubscribeModel, SubscribeAdmin)
+admin.site.register(CategoryListPageModel, CategoryListPageAdmin)
+admin.site.register(CategoryModel, CategoryAdmin)
