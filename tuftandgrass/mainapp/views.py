@@ -84,3 +84,22 @@ def subscribe(request):
             return HttpResponse(request, 'Success')
     else:
         return HttpResponseForbidden(request)
+
+
+def category_list(request):
+    template = 'mainapp/category_list.html'
+    context = {
+        'categorylistpage': CategoryListPageModel.objects.first(),
+        'categories': CategoryModel.objects.all(),
+    }
+    context = make_context(context)
+    return render(request, template, context)
+
+
+def category_detail(request, category_slug):
+    template = 'mainapp/category_detail.html'
+    context = {
+        'category': get_object_or_404(CategoryModel, slug=category_slug),
+    }
+    context = make_context(context)
+    return render(request, template, context)
