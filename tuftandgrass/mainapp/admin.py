@@ -303,16 +303,17 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     fields = (
+        'img',
         'title_ru',
         'title_en',
         'title_uz',
         'description_ru',
         'description_en',
         'description_uz',
-        'slug',
-        'img',
         'category',
         'price',
+        'new',
+        'slug',
     )
     prepopulated_fields = {"slug": ("title_en",)}
 
