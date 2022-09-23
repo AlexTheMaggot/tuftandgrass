@@ -320,3 +320,27 @@ class CategoryModel(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
+
+class ProductModel(models.Model):
+    title_ru = models.CharField(max_length=200, verbose_name='Заголовок на русском')
+    title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
+    title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
+    description_ru = models.TextField(verbose_name='Описание на русском')
+    description_en = models.TextField(verbose_name='Описание на английском')
+    description_uz = models.TextField(verbose_name='Описание на узбекском')
+    slug = models.SlugField(verbose_name='URL')
+    img = models.ImageField(upload_to='categories/', verbose_name='Изображение')
+    category = models.ForeignKey(
+        CategoryModel,
+        on_delete=models.PROTECT,
+        related_name='products',
+        verbose_name='Категория')
+    price = models.IntegerField(verbose_name='Цена')
+
+    def __str__(self):
+        return self.title_ru
+
+    class Meta:
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
