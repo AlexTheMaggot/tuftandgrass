@@ -95,21 +95,7 @@
 				</div>
 			</section>
             {% include 'blocks/footer.html' %}
-			<section class="ds page_copyright section_padding_15 with_top_border_container">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12 text-center">
-                            {% if '/en/' in request.path %}
-                                <p class="small-text grey">{{ indexpage.copyright_en }}</p>
-                            {% elif '/uz/' in request.path %}
-                                <p class="small-text grey">{{ indexpage.copyright_uz }}</p>
-                            {% else %}
-                                <p class="small-text grey">{{ indexpage.copyright_ru }}</p>
-                            {% endif %}
-						</div>
-					</div>
-				</div>
-			</section>
+			{% include 'blocks/copyright.html' %}
 		</div>
 	</div>
 	<script data-cfasync="false" src="{% static 'js/email-decode.min.js' %}"></script>
