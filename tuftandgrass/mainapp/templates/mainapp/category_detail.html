@@ -3,7 +3,6 @@
 {% block title %}{% if '/en/' in request.path %}{{ category.title_en }}{% elif '/uz/' in request.path %}{{ category.title_uz }}{% else %}{{ category.title_ru }}{% endif %}{% endblock %}
 {% block description %}{% if '/en/' in request.path %}{{ category.description_en }}{% elif '/uz/' in request.path %}{{ category.description_uz }}{% else %}{{ category.description_ru }}{% endif %}{% endblock %}
 {% block content %}
-<body>
 	<!--[if lt IE 9]>
 		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
 	<![endif]-->
@@ -146,9 +145,4 @@
 			{% include 'blocks/copyright.html' %}
 		</div>
 	</div>
-	<script data-cfasync="false" src="{% static 'js/email-decode.min.js' %}"></script>
-    <script src="{% static 'js/compressed.js' %}"></script>
-	<script src="{% static 'js/main.js' %}"></script>
-	<script src="{% static 'js/switcher.js' %}"></script>
-</body>
 {% endblock %}

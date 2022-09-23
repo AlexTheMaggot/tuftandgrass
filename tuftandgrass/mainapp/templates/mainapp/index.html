@@ -12,53 +12,12 @@
             <div class="bg-danger text-center">Вы используете <strong>устаревший</strong> браузер. Пожалуйста, обновите его.</div>
         {% endif %}
 	<![endif]-->
-
 	<div class="preloader">
 		<div class="preloader_image"></div>
 	</div>
-
-	<!-- search modal -->
-	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal">
-		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">
-				<i class="rt-icon2-cross2"></i>
-			</span>
-		</button>
-		<div class="widget widget_search">
-			<form method="get" class="searchform search-form form-inline" action="index.html">
-				<div class="form-group">
-					<input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
-				</div>
-                {% if '/en/' in request.path %}
-                    <button type="submit" class="theme_button">Search</button>
-                {% elif '/uz/' in request.path %}
-                    <button type="submit" class="theme_button">Qidirmoq</button>
-                {% else %}
-                    <button type="submit" class="theme_button">Поиск</button>
-                {% endif %}
-			</form>
-		</div>
-	</div>
-
-	<!-- Unyson messages modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
-		<div class="fw-messages-wrap ls with_padding">
-			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
-			<!--
-		<ul class="list-unstyled">
-			<li>Message To User</li>
-		</ul>
-		-->
-
-		</div>
-	</div>
-	<!-- eof .modal -->
-
-	<!-- wrappers for visual page editor and boxed version of template -->
 	<div id="canvas">
 		<div id="box_wrapper">
 			{% include 'blocks/header.html' %}
-
 			<section class="ds black section_padding_top_5 section_padding_bottom_5 section_bottom_overlap">
 				<div class="container">
 					<div class="row">
@@ -133,7 +92,6 @@
 					</div>
 				</div>
 			</section>
-
 			<section class="intro_section page_mainslider ds">
 				<div class="flexslider" data-nav="false">
 					<ul class="slides">
@@ -185,10 +143,7 @@
                         {% endfor %}
 					</ul>
 				</div>
-				<!-- eof flexslider -->
-
 			</section>
-
 			<section id="about" class="ls section_padding_100">
 				<div class="container">
 					<div class="row display_table_md">
@@ -271,7 +226,6 @@
 					</div>
 				</div>
 			</section>
-
 			<section id="products" class="ls ms section_padding_100">
 				<div class="container">
 					<div class="row">
@@ -314,7 +268,6 @@
 					</div>
 				</div>
 			</section>
-
 			<section id="faq" class="ls overflow_hidden half_section section_padding_top_150 section_padding_bottom_150 columns_padding_80">
 				<div class="image_cover image_cover_left"></div>
 				<div class="container-fluid">
@@ -372,7 +325,6 @@
 					</div>
 				</div>
 			</section>
-
 			<section id="team" class="ls ms section_padding_top_130 section_padding_bottom_130">
 				<div class="container">
 					<div class="row">
@@ -390,7 +342,6 @@
                                 <hr class="divider_30_2 main_bg_color2">
                                 <p>{{ indexpage.fifthblock_description_ru }}</p>
                             {% endif %}
-
 							<div class="owl-carousel team-carousel topmargin_60" data-nav="true" data-dots="false" data-responsive-lg="3" data-loop="true" data-margin="60">
 								{% for unit in team %}
                                     <article class="vertical-item">
@@ -424,7 +375,6 @@
 					</div>
 				</div>
 			</section>
-
 			<section id="call_back" class="ds page_contact2 parallax section_padding_100">
 				<div class="container">
 					<div class="row">
@@ -527,7 +477,6 @@
 					</div>
 				</div>
 			</section>
-
 			<section id="review" class="ls section_padding_top_150 section_padding_bottom_150">
 				<div class="container">
 					<div class="row">
@@ -574,7 +523,6 @@
 					</div>
 				</div>
 			</section>
-
 			<section id="blog" class="ls ms section_padding_top_150 section_padding_bottom_130">
 				<div class="container">
 					<div class="row">
@@ -630,7 +578,6 @@
 					</div>
 				</div>
 			</section>
-
 			<section class="ls ms">
                 <div class="col-sm-12 text-center">
                     {% if '/en/' in request.path %}
@@ -725,14 +672,8 @@
 					</div>
 				</div>
 			</section>
-
 			{% include 'blocks/footer.html' %}
             {% include 'blocks/copyright.html' %}
 		</div>
-		<!-- eof #box_wrapper -->
 	</div>
-	<!-- eof #canvas -->
-	<script data-cfasync="false" src="{% static 'js/email-decode.min.js' %}">
-    </script><script src="{% static 'js/compressed.js' %}"></script>
-	<script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
