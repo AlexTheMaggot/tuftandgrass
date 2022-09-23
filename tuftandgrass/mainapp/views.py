@@ -98,9 +98,13 @@ def category_list(request):
 
 def category_detail(request, category_slug):
     template = 'mainapp/category_detail.html'
+    products = ProductModel.objects.all().filter(category__slug=category_slug)
+    if 'sort' in request.GET:
+        products = products.order_by(request.GET['sort'])
     context = {
         'category': get_object_or_404(CategoryModel, slug=category_slug),
         'categories': CategoryModel.objects.all(),
+        'products': products,
     }
     context = make_context(context)
     return render(request, template, context)
