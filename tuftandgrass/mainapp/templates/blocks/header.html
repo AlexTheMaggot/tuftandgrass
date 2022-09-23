@@ -17,12 +17,15 @@
                         <ul class="mainmenu nav sf-menu">
                                 {% if '/en/' in request.path %}
                                     <li><a href="{% url 'mainapp_en:index' %}">Home</a></li>
+                                    <li><a href="{% url 'mainapp_en:category_list' %}">Catalog</a></li>
                                     <li><a href="{% url 'mainapp_en:news_list' %}">News</a></li>
                                 {% elif '/uz/' in request.path %}
                                     <li><a href="{% url 'mainapp_uz:index' %}">Uy</a></li>
+                                    <li><a href="{% url 'mainapp_uz:category_list' %}">Katalog</a></li>
                                     <li><a href="{% url 'mainapp_uz:news_list' %}">Yangiliklari</a></li>
                                 {% else %}
                                     <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                                    <li><a href="{% url 'mainapp:category_list' %}">Каталог</a></li>
                                     <li><a href="{% url 'mainapp:news_list' %}">Новости</a></li>
                                 {% endif %}
 
