@@ -29,6 +29,17 @@ def index(request):
     return render(request, template, context)
 
 
+def about(request):
+    temlate = 'mainapp/about.html'
+    context = {
+        'aboutpage': AboutPageModel.objects.first(),
+        'reviews': ReviewModel.objects.all(),
+        'products': IndexPageProductModel.objects.all(),
+    }
+    context = make_context(context)
+    return render(request, temlate, context)
+
+
 def news_list(request):
     template = 'mainapp/news_list.html'
     context = {
