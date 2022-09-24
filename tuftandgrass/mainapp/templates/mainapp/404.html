@@ -3,4 +3,38 @@
 {% block title %}{% if '/en/' in request.path %}404 - Not Found{% elif '/uz/' in request.path %}404 - Topilmadi{% else %}404 - Не Найдено{% endif %}{% endblock %}
 {% block description %}{% if '/en/' in request.path %}{{ indexpage.description_en }}{% elif '/uz/' in request.path %}{{ indexpage.description_uz }}{% else %}{{ indexpage.description_ru }}{% endif %}{% endblock %}
 {% block content %}
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
+	<div id="canvas">
+		<div id="box_wrapper">
+            {% include 'mainapp/header.html' %}
+			<section class="ds section_404 background_cover section_padding_top_100 section_padding_bottom_130">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center">
+							<div class="inline-block text-center">
+								<p class="not_found"><span class="highlight2">404</span></p>
+								{% if '/en/' in request.path %}
+                                    <h3>Oops, page not found!</h3>
+                                    <p><a href="{% url 'mainapp_en:index' %}" class="theme_button color1">Back to Homepage</a></p>
+                                {% elif '/uz/' in request.path %}
+                                    <h3>Voy, sahifa topilmadi!</h3>
+                                    <p><a href="{% url 'mainapp_uz:index' %}" class="theme_button color1">Bosh sahifaga qaytish</a></p>
+                                {% else %}
+                                    <h3>Ой, страница не найдена!</h3>
+                                    <p><a href="{% url 'mainapp:index' %}" class="theme_button color1">Назад на главную</a></p>
+                                {% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+            {% include 'blocks/footer.html' %}
+			{% include 'blocks/copyright.html' %}
+		</div>
+	</div>
 {% endblock %}
