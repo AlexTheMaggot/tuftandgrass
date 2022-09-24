@@ -392,21 +392,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
                                         {% if '/en/' in request.path %}
-                                            <label for="consultation-name">Full Name
-                                                <span class="required">*</span>
-                                            </label>
+                                            <label for="consultation-name">Full Name<span class="required">*</span></label>
                                             <i class="fa fa-user highlight2" aria-hidden="true"></i>
                                             <input type="text" aria-required="true" size="30" value="" name="name" id="consultation-name" class="form-control" placeholder="Full Name">
                                         {% elif '/uz/' in request.path %}
-                                            <label for="consultation-name">Ism
-                                                <span class="required">*</span>
-                                            </label>
+                                            <label for="consultation-name">Ism<span class="required">*</span></label>
                                             <i class="fa fa-user highlight2" aria-hidden="true"></i>
                                             <input type="text" aria-required="true" size="30" value="" name="name" id="consultation-name" class="form-control" placeholder="Ism">
                                         {% else %}
-                                            <label for="consultation-name">Имя
-                                                <span class="required">*</span>
-                                            </label>
+                                            <label for="consultation-name">Имя<span class="required">*</span></label>
                                             <i class="fa fa-user highlight2" aria-hidden="true"></i>
                                             <input type="text" aria-required="true" size="30" value="" name="name" id="consultation-name" class="form-control" placeholder="Имя">
                                         {% endif %}
@@ -415,21 +409,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
                                         {% if '/en/' in request.path %}
-                                            <label for="consultation-phone">Phone Number
-                                                <span class="required">*</span>
-                                            </label>
+                                            <label for="consultation-phone">Phone Number<span class="required">*</span></label>
                                             <i class="fa fa-phone highlight2" aria-hidden="true"></i>
                                             <input type="text" aria-required="true" size="30" value="" name="phone" id="consultation-phone" class="form-control" placeholder="Phone Number">
                                         {% elif '/uz/' in request.path %}
-                                            <label for="consultation-phone">Telefon raqami
-                                                <span class="required">*</span>
-                                            </label>
+                                            <label for="consultation-phone">Telefon raqami<span class="required">*</span></label>
                                             <i class="fa fa-phone highlight2" aria-hidden="true"></i>
                                             <input type="text" aria-required="true" size="30" value="" name="phone" id="consultation-phone" class="form-control" placeholder="Telefon raqami">
                                         {% else %}
-                                            <label for="consultation-phone">Номер телефона
-                                                <span class="required">*</span>
-                                            </label>
+                                            <label for="consultation-phone">Номер телефона<span class="required">*</span></label>
                                             <i class="fa fa-phone highlight2" aria-hidden="true"></i>
                                             <input type="text" aria-required="true" size="30" value="" name="phone" id="consultation-phone" class="form-control" placeholder="Номер телефона">
                                         {% endif %}
@@ -437,9 +425,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label for="consultation-email">E-mail
-											<span class="required">*</span>
-										</label>
+										<label for="consultation-email">E-mail</label>
 										<i class="fa fa-envelope highlight2" aria-hidden="true"></i>
 										<input type="email" aria-required="false" size="30" value="" name="email" id="consultation-email" class="form-control" placeholder="E-mail">
 									</div>
@@ -550,7 +536,13 @@
 									<img src="{{ post.img.url }}" alt="">
 
 									<div class="media-links">
-										<a href="blog-single-left.html" class="abs-link"></a>
+                                        {% if '/en/' in request.path %}
+                                            <a href="{% url "mainapp_en:news_detail" post.id %}" class="abs-link"></a>
+                                        {% elif '/uz/' in request.path %}
+                                            <a href="{% url "mainapp_uz:news_detail" post.id %}" class="abs-link"></a>
+                                        {% else %}
+                                            <a href="{% url "mainapp:news_detail" post.id %}" class="abs-link"></a>
+                                        {% endif %}
 									</div>
 
 								</div>
@@ -559,17 +551,17 @@
 										<time class="entry-date" datetime="2017-03-13T08:50:40+00:00">{{ post.date|date:'Y-m-d' }}</time>
 									</span>
                                     {% if '/en/' in request.path %}
-                                        <h4 class="entry-title"><a href="blog-single-left.html">{{ post.title_en }}</a></h4>
+                                        <h4 class="entry-title"><a href="{% url "mainapp_en:news_detail" post.id %}">{{ post.title_en }}</a></h4>
                                         <p>{{ post.description_en }}</p>
-                                        <a href="/" class="theme_button color1 topmargin_10">Read more</a>
+                                        <a href="{% url "mainapp_en:news_detail" post.id %}" class="theme_button color1 topmargin_10">Read more</a>
                                     {% elif '/uz/' in request.path %}
-                                        <h4 class="entry-title"><a href="blog-single-left.html">{{ post.title_uz }}</a></h4>
+                                        <h4 class="entry-title"><a href="{% url "mainapp_uz:news_detail" post.id %}">{{ post.title_uz }}</a></h4>
                                         <p>{{ post.description_uz }}</p>
-                                        <a href="/" class="theme_button color1 topmargin_10">Ko'proq o'qing</a>
+                                        <a href="{% url "mainapp_uz:news_detail" post.id %}" class="theme_button color1 topmargin_10">Ko'proq o'qing</a>
                                     {% else %}
-                                        <h4 class="entry-title"><a href="blog-single-left.html">{{ post.title_ru }}</a></h4>
+                                        <h4 class="entry-title"><a href="{% url "mainapp:news_detail" post.id %}">{{ post.title_ru }}</a></h4>
                                         <p>{{ post.description_ru }}</p>
-                                        <a href="/" class="theme_button color1 topmargin_10">Читать далее</a>
+                                        <a href="{% url "mainapp:news_detail" post.id %}" class="theme_button color1 topmargin_10">Читать далее</a>
                                     {% endif %}
 								</div>
 							</article>
