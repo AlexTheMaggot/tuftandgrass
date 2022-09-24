@@ -335,8 +335,10 @@ class ProductModel(models.Model):
         CategoryModel,
         on_delete=models.PROTECT,
         related_name='products',
-        verbose_name='Категория')
+        verbose_name='Категория'
+    )
     price = models.IntegerField(verbose_name='Цена')
+    new = models.BooleanField(verbose_name='Новинка')
 
     def __str__(self):
         return self.title_ru
@@ -344,3 +346,20 @@ class ProductModel(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+
+
+class ProductImageModel(models.Model):
+    product = models.ForeignKey(
+        ProductModel,
+        on_delete=models.CASCADE,
+        related_name='product_images',
+        verbose_name='Продукт'
+    )
+    img = models.ImageField(upload_to='product_images/', verbose_name='Изображение')
+
+    def __str__(self):
+        return str(self.pk)
+
+    class Meta:
+        verbose_name = 'Изображение продукта'
+        verbose_name_plural = 'Изображения продукта'
