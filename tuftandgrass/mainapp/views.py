@@ -16,6 +16,13 @@ def make_context(context):
     return context
 
 
+def custom_404(request, exception):
+    template = 'mainapp/404.html'
+    context = {}
+    context = make_context(context)
+    return render(request, template, context)
+
+
 def index(request):
     template = 'mainapp/index.html'
     context = {
