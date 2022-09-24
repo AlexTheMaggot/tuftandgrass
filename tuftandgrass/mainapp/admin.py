@@ -305,6 +305,10 @@ class ProductImageInline(admin.StackedInline):
     model = ProductImageModel
 
 
+class ProductSpecificationInline(admin.StackedInline):
+    model = ProductSpecificationModel
+
+
 class ProductAdmin(admin.ModelAdmin):
     fields = (
         'img',
@@ -323,6 +327,7 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title_en",)}
     inlines = [
         ProductImageInline,
+        ProductSpecificationInline,
     ]
 
 
