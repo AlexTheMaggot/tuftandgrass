@@ -301,6 +301,10 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title_en",)}
 
 
+class ProductImageInline(admin.StackedInline):
+    model = ProductImageModel
+
+
 class ProductAdmin(admin.ModelAdmin):
     fields = (
         'img',
@@ -316,6 +320,9 @@ class ProductAdmin(admin.ModelAdmin):
         'slug',
     )
     prepopulated_fields = {"slug": ("title_en",)}
+    inlines = [
+        ProductImageInline,
+    ]
 
 
 admin.site.register(IndexPageModel, IndexPageAdmin)
