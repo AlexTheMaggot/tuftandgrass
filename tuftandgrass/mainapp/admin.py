@@ -342,6 +342,17 @@ class AboutPageAdmin(NoAddNoDelete):
     )
 
 
+class ContactsPageAdmin(NoAddNoDelete):
+    fields = (
+        'title_ru',
+        'title_en',
+        'title_uz',
+        'description_ru',
+        'description_en',
+        'description_uz',
+    )
+
+
 admin.site.register(IndexPageModel, IndexPageAdmin)
 admin.site.register(NewsListPageModel, NewsListPageAdmin)
 admin.site.register(IndexPageSlideModel, IndexPageSlideAdmin)
@@ -358,3 +369,4 @@ admin.site.register(CategoryListPageModel, CategoryListPageAdmin)
 admin.site.register(CategoryModel, CategoryAdmin)
 admin.site.register(ProductModel, ProductAdmin)
 admin.site.register(AboutPageModel, AboutPageAdmin)
+admin.site.register(ContactsPageModel, ContactsPageAdmin)
