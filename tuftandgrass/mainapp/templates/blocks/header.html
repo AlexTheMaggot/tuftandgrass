@@ -20,16 +20,19 @@
                                     <li><a href="{% url 'mainapp_en:category_list' %}">Catalog</a></li>
                                     <li><a href="{% url 'mainapp_en:news_list' %}">News</a></li>
                                     <li><a href="{% url 'mainapp_en:about' %}">About</a></li>
+                                    <li><a href="{% url 'mainapp_en:contacts' %}">Contacts</a></li>
                                 {% elif '/uz/' in request.path %}
                                     <li><a href="{% url 'mainapp_uz:index' %}">Uy</a></li>
                                     <li><a href="{% url 'mainapp_uz:category_list' %}">Katalog</a></li>
                                     <li><a href="{% url 'mainapp_uz:news_list' %}">Yangiliklari</a></li>
                                     <li><a href="{% url 'mainapp_uz:about' %}">Haqida</a></li>
+                                    <li><a href="{% url 'mainapp_uz:contacts' %}">Kontaktlar</a></li>
                                 {% else %}
                                     <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
                                     <li><a href="{% url 'mainapp:category_list' %}">Каталог</a></li>
                                     <li><a href="{% url 'mainapp:news_list' %}">Новости</a></li>
                                     <li><a href="{% url 'mainapp:about' %}">О нас</a></li>
+                                    <li><a href="{% url 'mainapp:contacts' %}">Контакты</a></li>
                                 {% endif %}
 
                             <li><a href="/" id="header_language_ru">Рус</a></li>
