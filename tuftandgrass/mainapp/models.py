@@ -386,3 +386,19 @@ class ProductSpecificationModel(models.Model):
     class Meta:
         verbose_name = 'Характеристика продукта'
         verbose_name_plural = 'Характеристики продукта'
+
+
+class AboutPageModel(models.Model):
+    title_ru = models.CharField(max_length=200, verbose_name='Заголовок на русском')
+    title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
+    title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
+    description_ru = models.TextField(verbose_name='Описание на русском')
+    description_en = models.TextField(verbose_name='Описание на английском')
+    description_uz = models.TextField(verbose_name='Описание на узбекском')
+
+    def __str__(self):
+        return 'Страница о нас'
+
+    class Meta:
+        verbose_name = 'Страница о нас'
+        verbose_name_plural = 'Страница о нас'
