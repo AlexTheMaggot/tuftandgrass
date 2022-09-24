@@ -373,11 +373,15 @@ class ProductSpecificationModel(models.Model):
         related_name='product_specifications',
         verbose_name='Продукт'
     )
-    specification = models.CharField(max_length=200, verbose_name='Характеристика')
-    value = models.CharField(max_length=200, verbose_name='Значение')
+    specification_ru = models.CharField(max_length=200, verbose_name='Характеристика на русском')
+    specification_en = models.CharField(max_length=200, verbose_name='Характеристика на английском')
+    specification_uz = models.CharField(max_length=200, verbose_name='Характеристика на узбекском')
+    value_ru = models.CharField(max_length=200, verbose_name='Значение на русском')
+    value_en = models.CharField(max_length=200, verbose_name='Значение на английском')
+    value_uz = models.CharField(max_length=200, verbose_name='Значение на узбекском')
 
     def __str__(self):
-        return self.specification
+        return self.specification_ru
 
     class Meta:
         verbose_name = 'Характеристика продукта'
