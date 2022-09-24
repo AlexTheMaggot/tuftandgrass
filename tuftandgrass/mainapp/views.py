@@ -16,7 +16,7 @@ def make_context(context):
     return context
 
 
-def custom_404(request, exception):
+def custom_404(request):
     template = 'mainapp/404.html'
     context = {}
     context = make_context(context)
