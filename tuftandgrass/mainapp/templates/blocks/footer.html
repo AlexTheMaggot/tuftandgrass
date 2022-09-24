@@ -73,11 +73,11 @@
                             <div class="media-body media-middle">
                                 <h4>
                                     {% if '/en/' in request.path %}
-                                        <a href="/">{{ post.title_en }}</a>
+                                        <a href="{% url 'mainapp_en:news_detail' post.id %}">{{ post.title_en }}</a>
                                     {% elif '/uz/' in request.path %}
-                                        <a href="/">{{ post.title_uz }}</a>
+                                        <a href="{% url 'mainapp_uz:news_detail' post.id %}">{{ post.title_uz }}</a>
                                     {% else %}
-                                        <a href="/">{{ post.title_ru }}</a>
+                                        <a href="{% url 'mainapp:news_detail' post.id %}">{{ post.title_ru }}</a>
                                     {% endif %}
                                 </h4>
                                 <span class="entry-date highlight2 small-text">
