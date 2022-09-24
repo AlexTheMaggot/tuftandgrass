@@ -112,11 +112,11 @@
                                                 <div class="item-content">
                                                     <h4 class=" bottommargin_10">
                                                         {% if '/en/' in request.path %}
-                                                            <a href="shop-product-right.html">{{ product.title_en }}</a>
+                                                            <a href="{% url 'mainapp_en:product_detail' product.category.slug product.slug %}">{{ product.title_en }}</a>
                                                         {% elif '/uz/' in request.path %}
-                                                            <a href="shop-product-right.html">{{ product.title_uz }}</a>
+                                                            <a href="{% url 'mainapp_uz:product_detail' product.category.slug product.slug %}">{{ product.title_uz }}</a>
                                                         {% else %}
-                                                            <a href="shop-product-right.html">{{ product.title_ru }}</a>
+                                                            <a href="{% url 'mainapp:product_detail' product.category.slug product.slug %}">{{ product.title_ru }}</a>
                                                         {% endif %}
                                                     </h4>
                                                     <p class="price medium">
@@ -124,11 +124,11 @@
                                                     </p>
                                                     <p>
                                                         {% if '/en/' in request.path %}
-                                                            <a href="shop-right.html#" class="theme_button color2">More</a>
+                                                            <a href="{% url 'mainapp_en:product_detail' product.category.slug product.slug %}" class="theme_button color2">More</a>
                                                         {% elif '/uz/' in request.path %}
-                                                            <a href="shop-right.html#" class="theme_button color2">Ko'proq</a>
+                                                            <a href="{% url 'mainapp_uz:product_detail' product.category.slug product.slug %}" class="theme_button color2">Ko'proq</a>
                                                         {% else %}
-                                                            <a href="shop-right.html#" class="theme_button color2">Подробнее</a>
+                                                            <a href="{% url 'mainapp:product_detail' product.category.slug product.slug %}" class="theme_button color2">Подробнее</a>
                                                         {% endif %}
                                                     </p>
                                                 </div>
