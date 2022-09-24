@@ -1,0 +1,187 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{% if '/en/' in request.path %}{{ product.title_en }}{% elif '/uz/' in request.path %}{{ product.title_uz }}{% else %}{{ product.title_ru }}{% endif %}{% endblock %}
+{% block description %}{% if '/en/' in request.path %}{{ product.description_en }}{% elif '/uz/' in request.path %}{{ product.description_uz }}{% else %}{{ product.description_ru }}{% endif %}{% endblock %}
+{% block content %}
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
+	<div id="canvas">
+		<div id="box_wrapper">
+            {% include 'blocks/header.html' %}
+			<section class="page_breadcrumbs ds parallax background_overlay section_padding_top_65 section_padding_bottom_65">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+                            {% if '/en/' in request.path %}
+                                <h2 class="highlight2">{{ product.title_en }}</h2>
+                                <ol class="breadcrumb darklinks color2">
+                                    <li><a href="{% url 'mainapp_en:index' %}">Home</a></li>
+                                    <li><a href="{% url 'mainapp_en:category_list' %}">Catalog</a></li>
+                                    <li><a href="{% url 'mainapp_en:category_detail' product.category.slug %}">{{ product.category.title_en }}</a></li>
+                                    <li class="active">{{ product.title_en }}</li>
+                                </ol>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="highlight2">{{ product.title_uz }}</h2>
+                                <ol class="breadcrumb darklinks color2">
+                                    <li><a href="{% url 'mainapp_uz:index' %}">Uy</a></li>
+                                    <li><a href="{% url 'mainapp_uz:category_list' %}">Katalog</a></li>
+                                    <li><a href="{% url 'mainapp_uz:category_detail' product.category.slug %}">{{ product.category.title_uz }}</a></li>
+                                    <li class="active">{{ product.title_uz }}</li>
+                                </ol>
+                            {% else %}
+                                <h2 class="highlight2">{{ product.title_ru }}</h2>
+                                <ol class="breadcrumb darklinks color2">
+                                    <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                                    <li><a href="{% url 'mainapp:category_list' %}">Каталог</a></li>
+                                    <li><a href="{% url 'mainapp:category_detail' product.category.slug %}">{{ product.category.title_ru }}</a></li>
+                                    <li class="active">{{ product.title_ru }}</li>
+                                </ol>
+                            {% endif %}
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="ls section_padding_top_100 section_padding_bottom_75 columns_padding_25">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="with_background with_padding ">
+								<div itemscope="" itemtype="http://schema.org/Product" class="product type-product row">
+									<div class="col-md-6">
+										<div class="images">
+                                            {% if product.new %}
+                                                <span class="newproduct">New</span>
+                                            {% endif %}
+											<a href="{{ product.img.url }}" itemprop="image" class="woocommerce-main-image zoom" data-rel="prettyPhoto[product-gallery]">
+												<img src="{{ product.img.url }}" class="attachment-shop_single wp-post-image with_background" alt="" title="">
+											</a>
+										</div>
+										<div class="thumbnails-wrap text-center">
+											<div id="product-thumbnails" class="owl-carousel thumbnails product-thumbnails" data-loop="true" data-center="true" data-margin="10" data-nav="false" data-dots="true" data-items="3" data-responsive-lg="3" data-responsive-md="3" data-responsive-sm="2"
+											    data-responsive-xs="2">
+                                                {% for image in product.product_images.all %}
+												<a href="{{ image.img.url }}" class="zoom first" title="" data-gal="prettyPhoto[product-gallery]">
+													<img src="{{ image.img.url }}" class="attachment-shop_thumbnail with_background" alt="">
+												</a>
+                                                {% endfor %}
+											</div>
+										</div>
+									</div>
+									<div class="summary entry-summary col-md-6">
+                                        {% if '/en/' in request.path %}
+                                            <h1 itemprop="name" class="product_title entry-title">{{ product.title_en }}</h1>
+                                            <div class="product_meta">
+                                                <span class="posted_in">
+                                                    <span class="grey">Category:</span>
+                                                    <span class="categories-links small-text">
+                                                        <a rel="category" href="{% url 'mainapp_en:category_detail' product.category.slug %}">{{ product.category.title_en }}</a>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        {% elif '/uz/' in request.path %}
+                                            <h1 itemprop="name" class="product_title entry-title">{{ product.title_uz }}</h1>
+                                            <div class="product_meta">
+                                                <span class="posted_in">
+                                                    <span class="grey">Kategoriya:</span>
+                                                    <span class="categories-links small-text">
+                                                        <a rel="category" href="{% url 'mainapp_uz:category_detail' product.category.slug %}">{{ product.category.title_uz }}</a>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        {% else %}
+                                            <h1 itemprop="name" class="product_title entry-title">{{ product.title_ru }}</h1>
+                                            <div class="product_meta">
+                                                <span class="posted_in">
+                                                    <span class="grey">Категория:</span>
+                                                    <span class="categories-links small-text">
+                                                        <a rel="category" href="{% url 'mainapp:category_detail' product.category.slug %}">{{ product.category.title_ru }}</a>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        {% endif %}
+										<div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+											<div itemprop="description">
+                                                {% if '/en/' in request.path %}
+                                                    <p>{{ product.description_en }}</p>
+                                                {% elif '/uz/' in request.path %}
+                                                    <p>{{ product.description_uz }}</p>
+                                                {% else %}
+                                                    <p>{{ product.description_ru }}</p>
+                                                {% endif %}
+											</div>
+											<ul class="list1 no-bullets">
+												<li>
+													<p class="price">
+                                                        <ins>
+                                                            <span class="amount">{{ product.price }} UZS</span>
+                                                        </ins>
+                                                    </p>
+                                                    {% if '/en/' in request.path %}
+                                                        {% if product.available %}
+                                                            <p class="stock out-of-stock"><span class="grey">Availability:</span> <span class="highlight"> In Stock</span></p>
+                                                        {% else %}
+                                                            <p class="stock text-danger"><span class="grey">Availability:</span> Out of Stock</p>
+                                                        {% endif %}
+                                                    {% elif '/uz/' in request.path %}
+                                                        {% if product.available %}
+                                                            <p class="stock out-of-stock"><span class="grey">Mavjudligi:</span> <span class="highlight"> Sotuvda mavjud</span></p>
+                                                        {% else %}
+                                                            <p class="stock text-danger"><span class="grey">Mavjudligi:</span> Sotuvda yo'q</p>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if product.available %}
+                                                            <p class="stock out-of-stock"><span class="grey">Наличие:</span> <span class="highlight"> В наличии</span></p>
+                                                        {% else %}
+                                                            <p class="stock text-danger"><span class="grey">Наличие:</span> Нет в наличии</p>
+                                                        {% endif %}
+                                                    {% endif %}
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+                                <div class="woocommerce-tabs">
+                                    <ul class="nav nav-tabs wc-tabs" role="tablist">
+                                        {% if '/en/' in request.path %}
+                                            <li><a href="shop-product-right.html#additional_tab" role="tab" data-toggle="tab">Specifications</a></li>
+                                        {% elif '/uz/' in request.path %}
+                                            <li><a href="shop-product-right.html#additional_tab" role="tab" data-toggle="tab">Texnik xususiyatlari</a></li>
+                                        {% else %}
+                                            <li><a href="shop-product-right.html#additional_tab" role="tab" data-toggle="tab">Характеристики</a></li>
+                                        {% endif %}
+                                    </ul>
+                                    <div class="tab-content top-color-border">
+                                        <div class="tab-pane fade" id="additional_tab">
+                                            <table class="table table-striped topmargin_30">
+                                                {% for item in product.product_specifications.all %}
+                                                    <tr>
+                                                        {% if '/en/' in request.path %}
+                                                            <th class="grey">{{ item.specification_en }}:</th>
+                                                            <td>{{ item.value_en }}</td>
+                                                        {% elif '/uz/' in request.path %}
+                                                            <th class="grey">{{ item.specification_uz }}:</th>
+                                                            <td>{{ item.value_uz }}</td>
+                                                        {% else %}
+                                                            <th class="grey">{{ item.specification_ru }}:</th>
+                                                            <td>{{ item.value_ru }}</td>
+                                                        {% endif %}
+                                                    </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+						</div>
+					</div>
+				</div>
+			</section>
+            {% include 'blocks/footer.html' %}
+            {% include 'blocks/copyright.html' %}
+		</div>
+	</div>
+{% endblock %}
