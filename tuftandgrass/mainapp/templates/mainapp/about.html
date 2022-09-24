@@ -1,0 +1,197 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{% if '/en/' in request.path %}{{ aboutpage.title_en }}{% elif '/uz/' in request.path %}{{ aboutpage.title_uz }}{% else %}{{ aboutpage.title_ru }}{% endif %}{% endblock %}
+{% block description %}{% if '/en/' in request.path %}{{ aboutpage.description_en }}{% elif '/uz/' in request.path %}{{ aboutpage.description_uz }}{% else %}{{ aboutpage.description_ru }}{% endif %}{% endblock %}
+{% block content %}
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
+	<div id="canvas">
+		<div id="box_wrapper">
+            {% include 'blocks/header.html' %}
+			<section class="page_breadcrumbs ds parallax background_overlay section_padding_top_65 section_padding_bottom_65">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+                            {% if '/en/' in request.path %}
+                                <h2 class="highlight2">About</h2>
+                                <ol class="breadcrumb darklinks color2">
+                                    <li><a href="{% url 'mainapp_en:index' %}">Home</a></li>
+                                    <li class="active">About</li>
+                                </ol>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="highlight2">Haqida</h2>
+                                <ol class="breadcrumb darklinks color2">
+                                    <li><a href="{% url 'mainapp_uz:index' %}">Uy</a></li>
+                                    <li class="active">Haqida</li>
+                                </ol>
+                            {% else %}
+                                <h2 class="highlight2">О нас</h2>
+                                <ol class="breadcrumb darklinks color2">
+                                    <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                                    <li class="active">О нас</li>
+                                </ol>
+                            {% endif %}
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="ls section_padding_100">
+				<div class="container">
+					<div class="row display_table_md">
+						<div class="col-md-6 text-center display_table_cell_md">
+							<img src="{{ indexpage.secondblock_img.url }}" alt="" />
+						</div>
+						<div class="col-md-6 display_table_cell_md">
+                            {% if '/en/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.secondblock_title_en }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p class="medium">{{ indexpage.secondblock_subtitle_en }}</p>
+                                <p>{{ indexpage.secondblock_description_en }}</p>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.secondblock_title_uz }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p class="medium">{{ indexpage.secondblock_subtitle_uz }}</p>
+                                <p>{{ indexpage.secondblock_description_uz }}</p>
+                            {% else %}
+                                <h2 class="section_header">{{ indexpage.secondblock_title_ru }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p class="medium">{{ indexpage.secondblock_subtitle_ru }}</p>
+                                <p>{{ indexpage.secondblock_description_ru }}</p>
+                            {% endif %}
+							<div class="row regular">
+								<div class="col-sm-6">
+									<ul class="list2">
+                                        {% if '/en/' in request.path %}
+                                            <li>{{ indexpage.secondblock_feature_1_en }}</li>
+                                            <li>{{ indexpage.secondblock_feature_2_en }}</li>
+                                            <li>{{ indexpage.secondblock_feature_3_en }}</li>
+                                        {% elif '/uz/' in request.path %}
+                                            <li>{{ indexpage.secondblock_feature_1_uz }}</li>
+                                            <li>{{ indexpage.secondblock_feature_2_uz }}</li>
+                                            <li>{{ indexpage.secondblock_feature_3_uz }}</li>
+                                        {% else %}
+                                            <li>{{ indexpage.secondblock_feature_1_ru }}</li>
+                                            <li>{{ indexpage.secondblock_feature_2_ru }}</li>
+                                            <li>{{ indexpage.secondblock_feature_3_ru }}</li>
+                                        {% endif %}
+									</ul>
+								</div>
+								<div class="col-sm-6">
+									<ul class="list2">
+										{% if '/en/' in request.path %}
+                                            <li>{{ indexpage.secondblock_feature_4_en }}</li>
+                                            <li>{{ indexpage.secondblock_feature_5_en }}</li>
+                                            <li>{{ indexpage.secondblock_feature_6_en }}</li>
+                                        {% elif '/uz/' in request.path %}
+                                            <li>{{ indexpage.secondblock_feature_4_uz }}</li>
+                                            <li>{{ indexpage.secondblock_feature_5_uz }}</li>
+                                            <li>{{ indexpage.secondblock_feature_6_uz }}</li>
+                                        {% else %}
+                                            <li>{{ indexpage.secondblock_feature_4_ru }}</li>
+                                            <li>{{ indexpage.secondblock_feature_5_ru }}</li>
+                                            <li>{{ indexpage.secondblock_feature_6_ru }}</li>
+                                        {% endif %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="ls ms section_padding_top_150 section_padding_bottom_150">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1 text-center">
+                            {% if '/en/' in request.path %}
+                                <h2 class="section_header">Testimonials</h2>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="section_header">Sharhlar</h2>
+                            {% else %}
+                                <h2 class="section_header">Отзывы</h2>
+                            {% endif %}
+							<hr class="divider_30_2 main_bg_color2">
+							<div class="owl-carousel testimonials-owl-content topmargin_60" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1" data-loop="true" data-margin="20" data-dots="false" data-nav="true">
+								{% for review in reviews %}
+                                    {% if '/en/' in request.path %}
+                                        <blockquote class="with_quotes">{{ review.text_en }}</blockquote>
+                                    {% elif '/uz/' in request.path %}
+                                        <blockquote class="with_quotes">{{ review.text_uz }}</blockquote>
+                                    {% else %}
+                                        <blockquote class="with_quotes">{{ review.text_ru }}</blockquote>
+                                    {% endif %}
+                                {% endfor %}
+							</div>
+							<div class="owl-carousel testimonials-owl-dots topmargin_20" data-responsive-lg="3" data-responsive-md="3" data-responsive-sm="3" data-responsive-xs="3" data-center="true" data-loop="true" data-margin="30" data-touch-drag="false" data-mouse-drag="false">
+								{% for review in reviews %}
+                                    <div>
+                                        <img src="{{ review.img.url }}" alt="" />
+                                        <div class="item-meta">
+                                            {% if '/en/' in request.path %}
+                                                <h4 class="bottommargin_0">{{ review.name_en }}</h4>
+                                                <p class="small-text highlight2">{{ review.position_en }}</p>
+                                            {% elif '/uz/' in request.path %}
+                                                <h4 class="bottommargin_0">{{ review.name_uz }}</h4>
+                                                <p class="small-text highlight2">{{ review.position_uz }}</p>
+                                            {% else %}
+                                                <h4 class="bottommargin_0">{{ review.name_ru }}</h4>
+                                                <p class="small-text highlight2">{{ review.position_ru }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="ls section_padding_100">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+                            {% if '/en/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.thirdblock_title_en }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.thirdblock_description_en }}</p>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.thirdblock_title_uz }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.thirdblock_description_uz }}</p>
+                            {% else %}
+                                <h2 class="section_header">{{ indexpage.thirdblock_title_ru }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.thirdblock_description_ru }}</p>
+                            {% endif %}
+							<div class="owl-carousel topmargin_60" data-nav="true" data-dots="false" data-responsive-lg="3" data-loop="true" data-margin="60">
+								{% for product in products %}
+                                    <article class="vertical-item product-item">
+                                        <div class="item-media bottommargin_30">
+                                            <img src="{{ product.img.url }}" alt="" />
+                                        </div>
+                                        <div class="item-content">
+                                            {% if '/en/' in request.path %}
+                                                <h4><a href="{{ product.link }}">{{ product.title_en }}</a></h4>
+                                                <p>{{ product.description_en }}</p>
+                                            {% elif '/uz/' in request.path %}
+                                                <h4><a href="{{ product.link }}">{{ product.title_uz }}</a></h4>
+                                                <p>{{ product.description_uz }}</p>
+                                            {% else %}
+                                                <h4><a href="{{ product.link }}">{{ product.title_ru }}</a></h4>
+                                                <p>{{ product.description_ru }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </article>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+            {% include 'blocks/footer.html' %}
+            {% include 'blocks/copyright.html' %}
+		</div>
+	</div>
+{% endblock %}
