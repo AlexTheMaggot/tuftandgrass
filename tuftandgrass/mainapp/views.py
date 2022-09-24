@@ -108,3 +108,12 @@ def category_detail(request, category_slug):
     }
     context = make_context(context)
     return render(request, template, context)
+
+
+def product_detail(request, category_slug, product_slug):
+    template = 'mainapp/product_detail.html'
+    context = {
+        'product': get_object_or_404(ProductModel, slug=product_slug)
+    }
+    context = make_context(context)
+    return render(request, template, context)
