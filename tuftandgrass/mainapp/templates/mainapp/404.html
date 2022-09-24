@@ -1,0 +1,6 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{% if '/en/' in request.path %}404 - Not Found{% elif '/uz/' in request.path %}404 - Topilmadi{% else %}404 - Не Найдено{% endif %}{% endblock %}
+{% block description %}{% if '/en/' in request.path %}{{ indexpage.description_en }}{% elif '/uz/' in request.path %}{{ indexpage.description_uz }}{% else %}{{ indexpage.description_ru }}{% endif %}{% endblock %}
+{% block content %}
+{% endblock %}
