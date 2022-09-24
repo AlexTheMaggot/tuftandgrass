@@ -317,6 +317,7 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'price',
         'new',
+        'available',
         'slug',
     )
     prepopulated_fields = {"slug": ("title_en",)}
