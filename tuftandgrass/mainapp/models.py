@@ -339,6 +339,7 @@ class ProductModel(models.Model):
     )
     price = models.IntegerField(verbose_name='Цена')
     new = models.BooleanField(verbose_name='Новинка')
+    available = models.BooleanField(verbose_name='Наличие')
 
     def __str__(self):
         return self.title_ru
@@ -363,3 +364,21 @@ class ProductImageModel(models.Model):
     class Meta:
         verbose_name = 'Изображение продукта'
         verbose_name_plural = 'Изображения продукта'
+
+
+class ProductSpecificationModel(models.Model):
+    product = models.ForeignKey(
+        ProductModel,
+        on_delete=models.CASCADE,
+        related_name='product_specifications',
+        verbose_name='Продукт'
+    )
+    specification = models.CharField(max_length=200, verbose_name='Характеристика')
+    value = models.CharField(max_length=200, verbose_name='Значение')
+
+    def __str__(self):
+        return self.specification
+
+    class Meta:
+        verbose_name = 'Характеристика продукта'
+        verbose_name_plural = 'Характеристики продукта'
