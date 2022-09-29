@@ -61,12 +61,12 @@
 											</a>
 										</div>
 										<div class="thumbnails-wrap text-center">
-											<div id="product-thumbnails" class="owl-carousel thumbnails product-thumbnails" data-loop="true" data-center="true" data-margin="10" data-nav="false" data-dots="true" data-items="3" data-responsive-lg="3" data-responsive-md="3" data-responsive-sm="2"
+											<div id="product-thumbnails" class="owl-carousel thumbnails product-thumbnails" data-loop="false" data-center="false" data-margin="10" data-nav="false" data-dots="true" data-items="3" data-responsive-lg="3" data-responsive-md="3" data-responsive-sm="2"
 											    data-responsive-xs="2">
                                                 {% for image in product.product_images.all %}
-												<a href="{{ image.img.url }}" class="zoom first" title="" data-gal="prettyPhoto[product-gallery]">
-													<img src="{{ image.img.url }}" class="attachment-shop_thumbnail with_background" alt="">
-												</a>
+                                                    <a href="{{ image.img.url }}" class="zoom first" title="" id="img_thumbnail" data-gal="prettyPhoto[product-gallery]">
+                                                        <img src="{{ image.img.url }}" class="attachment-shop_thumbnail with_background" alt="">
+                                                    </a>
                                                 {% endfor %}
 											</div>
 										</div>
