@@ -322,6 +322,26 @@ class CategoryModel(models.Model):
         verbose_name_plural = 'Категории'
 
 
+class SubCategoryModel(models.Model):
+    title_ru = models.CharField(max_length=200, verbose_name='Заголовок на русском')
+    title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
+    title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
+    slug = models.SlugField(verbose_name='URL')
+    category = models.ForeignKey(
+        CategoryModel,
+        on_delete=models.PROTECT,
+        verbose_name='Категория',
+        related_name='subcategories'
+    )
+
+    def __str__(self):
+        return self.title_ru
+
+    class Meta:
+        verbose_name = 'Подкатегория'
+        verbose_name_plural = 'Подкатегории'
+
+
 class ProductModel(models.Model):
     title_ru = models.CharField(max_length=200, verbose_name='Заголовок на русском')
     title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
@@ -331,11 +351,11 @@ class ProductModel(models.Model):
     description_uz = models.TextField(verbose_name='Описание на узбекском')
     slug = models.SlugField(verbose_name='URL')
     img = models.ImageField(upload_to='categories/', verbose_name='Изображение')
-    category = models.ForeignKey(
-        CategoryModel,
+    subcategory = models.ForeignKey(
+        SubCategoryModel,
         on_delete=models.PROTECT,
         related_name='products',
-        verbose_name='Категория'
+        verbose_name='Подкатегория'
     )
     price = models.IntegerField(verbose_name='Цена')
     new = models.BooleanField(verbose_name='Новинка')

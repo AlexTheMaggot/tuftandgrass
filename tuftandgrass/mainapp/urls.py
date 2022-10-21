@@ -12,7 +12,8 @@ urlpatterns = [
     path('news/<int:post_id>/', views.news_detail, name='news_detail'),
     path('catalog/', views.category_list, name='category_list'),
     path('catalog/<slug:category_slug>/', views.category_detail, name='category_detail'),
-    path('catalog/<slug:category_slug>/<slug:product_slug>/', views.product_detail, name='product_detail'),
+    path('catalog/<slug:category_slug>/<slug:subcategory_slug>/', views.subcategory_detail, name='subcategory_detail'),
+    path('catalog/<slug:category_slug>/<slug:subcategory_slug>/<slug:product_slug>/', views.product_detail, name='product_detail'),
     path('order/', views.order, name='order'),
     path('subscribe/', views.subscribe, name='subscribe'),
 ]

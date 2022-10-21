@@ -301,6 +301,16 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title_en",)}
 
 
+class SubCategoryAdmin(admin.ModelAdmin):
+    fields = (
+        'title_ru',
+        'title_en',
+        'title_uz',
+        'slug',
+    )
+    prepopulated_fields = {"slug": ("title_en",)}
+
+
 class ProductImageInline(admin.StackedInline):
     model = ProductImageModel
 
@@ -367,6 +377,7 @@ admin.site.register(FooterModel, FooterAdmin)
 admin.site.register(SubscribeModel, SubscribeAdmin)
 admin.site.register(CategoryListPageModel, CategoryListPageAdmin)
 admin.site.register(CategoryModel, CategoryAdmin)
+admin.site.register(SubCategoryModel, SubCategoryAdmin)
 admin.site.register(ProductModel, ProductAdmin)
 admin.site.register(AboutPageModel, AboutPageAdmin)
 admin.site.register(ContactsPageModel, ContactsPageAdmin)

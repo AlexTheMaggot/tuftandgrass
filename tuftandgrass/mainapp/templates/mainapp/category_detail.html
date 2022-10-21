@@ -17,25 +17,52 @@
 					<div class="row">
 						<div class="col-sm-12 text-center">
                             {% if '/en/' in request.path %}
-                                <h2 class="highlight2">{{ category.title_en }}</h2>
+                                {% if subcategory %}
+                                    <h2 class="highlight2">{{ subcategory.title_en }}</h2>
+                                {% else %}
+                                    <h2 class="highlight2">{{ category.title_en }}</h2>
+                                {% endif %}
                                 <ol class="breadcrumb darklinks color2">
                                     <li><a href="{% url 'mainapp_en:index' %}">Home</a></li>
                                     <li><a href="{% url 'mainapp_en:category_list' %}">Catalog</a></li>
-                                    <li class="active">{{ category.title_en }}</li>
+                                    {% if subcategory %}
+                                        <li><a href="{% url 'mainapp_en:category_detail' category.slug %}">{{ category.title_en }}</a></li>
+                                        <li class="active">{{ subcategory.title_en }}</li>
+                                    {% else %}
+                                        <li class="active">{{ category.title_en }}</li>
+                                    {% endif %}
                                 </ol>
                             {% elif '/uz/' in request.path %}
-                                <h2 class="highlight2">{{ category.title_uz }}</h2>
+                                {% if subcategory %}
+                                    <h2 class="highlight2">{{ subcategory.title_uz }}</h2>
+                                {% else %}
+                                    <h2 class="highlight2">{{ category.title_uz }}</h2>
+                                {% endif %}
                                 <ol class="breadcrumb darklinks color2">
                                     <li><a href="{% url 'mainapp_uz:index' %}">Uy</a></li>
                                     <li><a href="{% url 'mainapp_uz:category_list' %}">Katalog</a></li>
-                                    <li class="active">{{ category.title_uz }}</li>
+                                    {% if subcategory %}
+                                        <li><a href="{% url 'mainapp_uz:category_detail' category.slug %}">{{ category.title_uz }}</a></li>
+                                        <li class="active">{{ subcategory.title_uz }}</li>
+                                    {% else %}
+                                        <li class="active">{{ category.title_uz }}</li>
+                                    {% endif %}
                                 </ol>
                             {% else %}
-                                <h2 class="highlight2">{{ category.title_ru }}</h2>
+                                {% if subcategory %}
+                                    <h2 class="highlight2">{{ subcategory.title_ru }}</h2>
+                                {% else %}
+                                    <h2 class="highlight2">{{ category.title_ru }}</h2>
+                                {% endif %}
                                 <ol class="breadcrumb darklinks color2">
                                     <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
                                     <li><a href="{% url 'mainapp:category_list' %}">Каталог</a></li>
-                                    <li class="active">{{ category.title_ru }}</li>
+                                    {% if subcategory %}
+                                        <li><a href="{% url 'mainapp:category_detail' category.slug %}">{{ category.title_ru }}</a></li>
+                                        <li class="active">{{ subcategory.title_ru }}</li>
+                                    {% else %}
+                                        <li class="active">{{ category.title_ru }}</li>
+                                    {% endif %}
                                 </ol>
                             {% endif %}
 						</div>
@@ -51,21 +78,66 @@
                                     <h3 class="widget-title poppins">All Categories</h3>
                                     <ul class="greylinks">
                                         {% for category in categories %}
-                                            <li><a href="{% url 'mainapp_en:category_detail' category.slug %}">{{ category.title_en }}</a></li>
+                                            {% if category.slug in request.path %}
+                                                <li><a class="fw-700" href="{% url 'mainapp_en:category_detail' category.slug %}">{{ category.title_en }}</a></li>
+                                            {% else %}
+                                                <li><a href="{% url 'mainapp_en:category_detail' category.slug %}">{{ category.title_en }}</a></li>
+                                            {% endif %}
+                                            {% if category.subcategories.all %}
+                                                <ul class="greylinks">
+                                                    {% for subcategory in category.subcategories.all %}
+                                                        {% if subcategory.slug in request.path %}
+                                                            <li><a class="fw-700" href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_en }}</a></li>
+                                                        {% else %}
+                                                            <li><a href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_en }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
                                         {% endfor %}
                                     </ul>
                                 {% elif '/uz/' in request.path %}
                                     <h3 class="widget-title poppins">Barcha Toifalar</h3>
                                     <ul class="greylinks">
                                         {% for category in categories %}
-                                            <li><a href="{% url 'mainapp_uz:category_detail' category.slug %}">{{ category.title_uz }}</a></li>
+                                            {% if category.slug in request.path %}
+                                                <li><a class="fw-700" href="{% url 'mainapp_uz:category_detail' category.slug %}">{{ category.title_uz }}</a></li>
+                                            {% else %}
+                                                <li><a href="{% url 'mainapp_uz:category_detail' category.slug %}">{{ category.title_uz }}</a></li>
+                                            {% endif %}
+                                            {% if category.subcategories.all %}
+                                                <ul class="greylinks">
+                                                    {% for subcategory in category.subcategories.all %}
+                                                        {% if subcategory.slug in request.path %}
+                                                            <li><a class="fw-700" href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_uz }}</a></li>
+                                                        {% else %}
+                                                            <li><a href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_uz }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
                                         {% endfor %}
                                     </ul>
                                 {% else %}
                                     <h3 class="widget-title poppins">Все Категории</h3>
                                     <ul class="greylinks">
                                         {% for category in categories %}
-                                            <li><a href="{% url 'mainapp:category_detail' category.slug %}">{{ category.title_ru }}</a></li>
+                                            {% if category.slug in request.path %}
+                                                <li><a class="fw-700" href="{% url 'mainapp:category_detail' category.slug %}">{{ category.title_ru }}</a></li>
+                                            {% else %}
+                                                <li><a href="{% url 'mainapp:category_detail' category.slug %}">{{ category.title_ru }}</a></li>
+                                            {% endif %}
+                                            {% if category.subcategories.all %}
+                                                <ul class="greylinks">
+                                                    {% for subcategory in category.subcategories.all %}
+                                                        {% if subcategory.slug in request.path %}
+                                                            <li><a class="fw-700" href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_ru }}</a></li>
+                                                        {% else %}
+                                                            <li><a href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_ru }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
                                         {% endfor %}
                                     </ul>
                                 {% endif %}
@@ -112,11 +184,11 @@
                                                 <div class="item-content">
                                                     <h4 class=" bottommargin_10">
                                                         {% if '/en/' in request.path %}
-                                                            <a href="{% url 'mainapp_en:product_detail' product.category.slug product.slug %}">{{ product.title_en }}</a>
+                                                            <a href="{% url 'mainapp_en:product_detail' category.slug product.subcategory.slug product.slug %}">{{ product.title_en }}</a>
                                                         {% elif '/uz/' in request.path %}
-                                                            <a href="{% url 'mainapp_uz:product_detail' product.category.slug product.slug %}">{{ product.title_uz }}</a>
+                                                            <a href="{% url 'mainapp_uz:product_detail' category.slug product.subcategory.slug product.slug %}">{{ product.title_uz }}</a>
                                                         {% else %}
-                                                            <a href="{% url 'mainapp:product_detail' product.category.slug product.slug %}">{{ product.title_ru }}</a>
+                                                            <a href="{% url 'mainapp:product_detail' category.slug product.subcategory.slug product.slug %}">{{ product.title_ru }}</a>
                                                         {% endif %}
                                                     </h4>
                                                     <p class="price medium">
@@ -124,11 +196,11 @@
                                                     </p>
                                                     <p>
                                                         {% if '/en/' in request.path %}
-                                                            <a href="{% url 'mainapp_en:product_detail' product.category.slug product.slug %}" class="theme_button color2">More</a>
+                                                            <a href="{% url 'mainapp_en:product_detail' category.slug product.subcategory.slug product.slug %}" class="theme_button color2">More</a>
                                                         {% elif '/uz/' in request.path %}
-                                                            <a href="{% url 'mainapp_uz:product_detail' product.category.slug product.slug %}" class="theme_button color2">Ko'proq</a>
+                                                            <a href="{% url 'mainapp_uz:product_detail' category.slug product.subcategory.slug product.slug %}" class="theme_button color2">Ko'proq</a>
                                                         {% else %}
-                                                            <a href="{% url 'mainapp:product_detail' product.category.slug product.slug %}" class="theme_button color2">Подробнее</a>
+                                                            <a href="{% url 'mainapp:product_detail' category.slug product.subcategory.slug product.slug %}" class="theme_button color2">Подробнее</a>
                                                         {% endif %}
                                                     </p>
                                                 </div>
