@@ -327,6 +327,7 @@ class SubCategoryModel(models.Model):
     title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
     title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
     slug = models.SlugField(verbose_name='URL')
+    img = models.ImageField(upload_to='subcategories/', verbose_name='Изображение')
     category = models.ForeignKey(
         CategoryModel,
         on_delete=models.PROTECT,

@@ -306,6 +306,7 @@ class SubCategoryAdmin(admin.ModelAdmin):
         'title_ru',
         'title_en',
         'title_uz',
+        'category',
         'slug',
     )
     prepopulated_fields = {"slug": ("title_en",)}
@@ -328,7 +329,7 @@ class ProductAdmin(admin.ModelAdmin):
         'description_ru',
         'description_en',
         'description_uz',
-        'category',
+        'subcategory',
         'price',
         'new',
         'available',

@@ -138,7 +138,7 @@ def category_detail(request, category_slug):
 
 
 def subcategory_detail(request, category_slug, subcategory_slug):
-    template = 'mainapp/category_detail.html'
+    template = 'mainapp/subcategory_detail.html'
     products = ProductModel.objects.all().filter(subcategory__slug=subcategory_slug)
     if 'sort' in request.GET:
         products = products.order_by(request.GET['sort'])
