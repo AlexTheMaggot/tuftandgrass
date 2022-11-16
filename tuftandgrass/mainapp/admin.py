@@ -303,6 +303,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class SubCategoryAdmin(admin.ModelAdmin):
     fields = (
+        'img',
         'title_ru',
         'title_en',
         'title_uz',
