@@ -182,7 +182,13 @@
                                         <li class="product type-product">
                                             <div class="vertical-item content-padding text-center">
                                                 <div class="item-media with_background">
-                                                    <img src="{{ product.img.url }}" alt="" />
+                                                    {% if '/en/' in request.path %}
+                                                        <a href="{% url 'mainapp_en:product_detail' category.slug product.subcategory.slug product.slug %}"><img src="{{ product.img.url }}" alt="" /></a>
+                                                    {% elif '/uz/' in request.path %}
+                                                        <a href="{% url 'mainapp_uz:product_detail' category.slug product.subcategory.slug product.slug %}"><img src="{{ product.img.url }}" alt="" /></a>
+                                                    {% else %}
+                                                        <a href="{% url 'mainapp:product_detail' category.slug product.subcategory.slug product.slug %}"><img src="{{ product.img.url }}" alt="" /></a>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="item-content">
                                                     <h4 class=" bottommargin_10">
