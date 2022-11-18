@@ -308,6 +308,7 @@ class SubCategoryAdmin(admin.ModelAdmin):
         'title_en',
         'title_uz',
         'category',
+        'price',
         'slug',
     )
     prepopulated_fields = {"slug": ("title_en",)}

@@ -328,6 +328,7 @@ class SubCategoryModel(models.Model):
     title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
     slug = models.SlugField(verbose_name='URL')
     img = models.ImageField(upload_to='subcategories/', verbose_name='Изображение')
+    price = models.IntegerField(verbose_name='Цена')
     category = models.ForeignKey(
         CategoryModel,
         on_delete=models.PROTECT,
@@ -339,8 +340,8 @@ class SubCategoryModel(models.Model):
         return self.title_ru
 
     class Meta:
-        verbose_name = 'Подкатегория'
-        verbose_name_plural = 'Подкатегории'
+        verbose_name = 'Коллекция'
+        verbose_name_plural = 'Коллекции'
 
 
 class ProductModel(models.Model):
@@ -356,7 +357,7 @@ class ProductModel(models.Model):
         SubCategoryModel,
         on_delete=models.PROTECT,
         related_name='products',
-        verbose_name='Подкатегория'
+        verbose_name='Коллекция'
     )
     price = models.IntegerField(verbose_name='Цена')
     new = models.BooleanField(verbose_name='Новинка')

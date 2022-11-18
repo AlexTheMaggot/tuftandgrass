@@ -47,7 +47,13 @@
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <article class="vertical-item content-padding post format-standard text-center">
                                         <div class="item-media">
-                                            <img src="{{ category.img.url }}" alt="">
+                                            {% if '/en/' in request.path %}
+                                                <a href="{% url 'mainapp_en:category_detail' category.slug %}" rel="bookmark"><img src="{{ category.img.url }}" alt=""></a>
+                                            {% elif '/uz/' in request.path %}
+                                                <a href="{% url 'mainapp_uz:category_detail' category.slug %}" rel="bookmark"><img src="{{ category.img.url }}" alt=""></a>
+                                            {% else %}
+                                                <a href="{% url 'mainapp:category_detail' category.slug %}" rel="bookmark"><img src="{{ category.img.url }}" alt=""></a>
+                                            {% endif %}
                                         </div>
                                         <div class="item-content">
                                             <header class="entry-header">

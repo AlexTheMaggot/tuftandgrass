@@ -156,17 +156,20 @@
 									<div class="form-group select-group">
 										<select aria-required="true" id="sorting_products" name="sort" class="choice empty form-control">
 											{% if '/en/' in request.path %}
-                                                <option value="" disabled selected data-default>Default Sorting</option>
+                                                <option value="-id" selected>Default Sorting</option>
                                                 <option value="title_en">by Value</option>
-                                                <option value="price">by Price</option>
+                                                <option value="price">Cheap First</option>
+                                                <option value="-price">Expensive First</option>
                                             {% elif '/uz/' in request.path %}
-                                                <option value="" disabled selected data-default>Standart Tartiblash</option>
-                                                <option value="title_uz">Qiymat bo'yicha</option>
-                                                <option value="price">Narx bo'yicha</option>
+                                                <option value="-id" selected>Standart Tartiblash</option>
+                                                <option value="title_uz">Qiymat Bo'yicha</option>
+                                                <option value="price">Avval Arzon</option>
+                                                <option value="-price">Avvalo Azizlar</option>
                                             {% else %}
-                                                <option value="" disabled selected data-default>Сортировка по-умолчанию</option>
-                                                <option value="title_ru">По названию</option>
-                                                <option value="price">По цене</option>
+                                                <option value="-id" selected>Сортировка По-умолчанию</option>
+                                                <option value="title_ru">По Названию</option>
+                                                <option value="price">Сначала Дешевые</option>
+                                                <option value="-price">Сначала Дорогие</option>
                                             {% endif %}
 										</select>
 										<i class="fa fa-angle-down theme_button color1" aria-hidden="true"></i>

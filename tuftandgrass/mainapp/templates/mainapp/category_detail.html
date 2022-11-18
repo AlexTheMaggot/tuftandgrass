@@ -46,11 +46,49 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12">
-                            {% for subcategory in category.subcategories.all %}
+                            <div class="shop-sorting shop-sorting_cd">
+								<form class="form-inline content-justify vertical-center content-margins">
+                                    {% if '/en/' in request.path %}
+                                        <div class="fontsize_20">Results: {{ products.count }}</div>
+                                    {% elif '/uz/' in request.path %}
+                                        <div class="fontsize_20">Natijalar: {{ products.count }}</div>
+                                    {% else %}
+                                        <div class="fontsize_20">Результатов: {{ products.count }}</div>
+                                    {% endif %}
+									<div class="form-group select-group">
+										<select aria-required="true" id="sorting_products" name="sort" class="choice empty form-control">
+											{% if '/en/' in request.path %}
+                                                <option value="-id" selected>Default Sorting</option>
+                                                <option value="title_en">by Value</option>
+                                                <option value="price">Cheap First</option>
+                                                <option value="-price">Expensive First</option>
+                                            {% elif '/uz/' in request.path %}
+                                                <option value="-id" selected>Standart Tartiblash</option>
+                                                <option value="title_uz">Qiymat Bo'yicha</option>
+                                                <option value="price">Avval Arzon</option>
+                                                <option value="-price">Avvalo Azizlar</option>
+                                            {% else %}
+                                                <option value="-id" selected>Сортировка По-умолчанию</option>
+                                                <option value="title_ru">По Названию</option>
+                                                <option value="price">Сначала Дешевые</option>
+                                                <option value="-price">Сначала Дорогие</option>
+                                            {% endif %}
+										</select>
+										<i class="fa fa-angle-down theme_button color1" aria-hidden="true"></i>
+									</div>
+								</form>
+							</div>
+                            {% for subcategory in subcategories %}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <article class="vertical-item content-padding post format-standard text-center">
                                         <div class="item-media">
-                                            <img src="{{ subcategory.img.url }}" alt="">
+                                            {% if '/en/' in request.path %}
+                                                <a href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark"><img src="{{ subcategory.img.url }}" alt=""></a>
+                                            {% elif '/uz/' in request.path %}
+                                                <a href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark"><img src="{{ subcategory.img.url }}" alt=""></a>
+                                            {% else %}
+                                                <a href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark"><img src="{{ subcategory.img.url }}" alt=""></a>
+                                            {% endif %}
                                         </div>
                                         <div class="item-content">
                                             <header class="entry-header">
@@ -64,6 +102,7 @@
                                                     {% endif %}
                                                 </h4>
                                             </header>
+                                            <p class="bold">{{ subcategory.price }} UZS</p>
                                         </div>
                                     </article>
                                 </div>

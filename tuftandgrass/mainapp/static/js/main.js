@@ -1294,13 +1294,17 @@ $(window).on('load', function () {
         $('#header_language_en').attr('href', '/en' + path);
         $('#header_language_uz').attr('href', '/uz' + path);
     }
-	if ( window.location.search.replace('?', '').split('=')[1] === 'name' ) {
-		$('#sorting_products > option[value=""]').removeAttr('selected');
-		$('#sorting_products > option[value="name"]').attr('selected', 'true');
+	if ( window.location.search.replace('?', '').split('=')[1] === 'title_ru' ) {
+		$('#sorting_products > option[value="-id"]').removeAttr('selected');
+		$('#sorting_products > option[value="title_ru"]').attr('selected', 'true');
 	}
 	else if ( window.location.search.replace('?', '').split('=')[1] === 'price' ) {
-		$('#sorting_products > option[value=""]').removeAttr('selected');
+		$('#sorting_products > option[value="-id"]').removeAttr('selected');
 		$('#sorting_products > option[value="price"]').attr('selected', 'true');
+	}
+	else if ( window.location.search.replace('?', '').split('=')[1] === '-price' ) {
+		$('#sorting_products > option[value="-id"]').removeAttr('selected');
+		$('#sorting_products > option[value="-price"]').attr('selected', 'true');
 	}
 	$('#sorting_products').on('change', function () {
 		window.location.href = window.location.origin + window.location.pathname + '?sort=' + $(this).val();
