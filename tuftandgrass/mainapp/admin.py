@@ -296,19 +296,39 @@ class CategoryAdmin(admin.ModelAdmin):
         'description_ru',
         'description_en',
         'description_uz',
+        'has_subcategory',
         'slug',
     )
     prepopulated_fields = {"slug": ("title_en",)}
 
 
-class SubCategoryAdmin(admin.ModelAdmin):
+class SubcategoryAdmin(admin.ModelAdmin):
+    fields = (
+        'img',
+        'category',
+        'title_ru',
+        'title_en',
+        'title_uz',
+        'description_ru',
+        'description_en',
+        'description_uz',
+        'slug',
+    )
+    prepopulated_fields = {"slug": ("title_en",)}
+
+
+class CollectionAdmin(admin.ModelAdmin):
     fields = (
         'img',
         'title_ru',
         'title_en',
         'title_uz',
         'category',
-        'price',
+        'subcategory',
+        (
+            'price',
+            'show_price',
+        ),
         'slug',
     )
     prepopulated_fields = {"slug": ("title_en",)}
@@ -331,7 +351,7 @@ class ProductAdmin(admin.ModelAdmin):
         'description_ru',
         'description_en',
         'description_uz',
-        'subcategory',
+        'collection',
         'price',
         'new',
         'available',
@@ -366,21 +386,27 @@ class ContactsPageAdmin(NoAddNoDelete):
     )
 
 
-admin.site.register(IndexPageModel, IndexPageAdmin)
-admin.site.register(NewsListPageModel, NewsListPageAdmin)
-admin.site.register(IndexPageSlideModel, IndexPageSlideAdmin)
-admin.site.register(IndexPageProductModel, IndexPageProductAdmin)
-admin.site.register(IndexPageFAQModel, IndexPageFAQAdmin)
-admin.site.register(IndexPageTeamUnitModel, IndexPageTeamUnitAdmin)
-admin.site.register(OrderModel, OrderAdmin)
-admin.site.register(ReviewModel, ReviewAdmin)
-admin.site.register(NewsModel, NewsAdmin)
-admin.site.register(HeaderModel, HeaderAdmin)
-admin.site.register(FooterModel, FooterAdmin)
-admin.site.register(SubscribeModel, SubscribeAdmin)
-admin.site.register(CategoryListPageModel, CategoryListPageAdmin)
-admin.site.register(CategoryModel, CategoryAdmin)
-admin.site.register(SubCategoryModel, SubCategoryAdmin)
-admin.site.register(ProductModel, ProductAdmin)
-admin.site.register(AboutPageModel, AboutPageAdmin)
-admin.site.register(ContactsPageModel, ContactsPageAdmin)
+registers = [
+    [IndexPageModel, IndexPageAdmin],
+    [NewsListPageModel, NewsListPageAdmin],
+    [IndexPageSlideModel, IndexPageSlideAdmin],
+    [IndexPageProductModel, IndexPageProductAdmin],
+    [IndexPageFAQModel, IndexPageFAQAdmin],
+    [IndexPageTeamUnitModel, IndexPageTeamUnitAdmin],
+    [OrderModel, OrderAdmin],
+    [ReviewModel, ReviewAdmin],
+    [NewsModel, NewsAdmin],
+    [HeaderModel, HeaderAdmin],
+    [FooterModel, FooterAdmin],
+    [SubscribeModel, SubscribeAdmin],
+    [CategoryListPageModel, CategoryListPageAdmin],
+    [CategoryModel, CategoryAdmin],
+    [SubcategoryModel, SubcategoryAdmin],
+    [CollectionModel, CollectionAdmin],
+    [ProductModel, ProductAdmin],
+    [AboutPageModel, AboutPageAdmin],
+    [ContactsPageModel, ContactsPageAdmin],
+]
+
+for item in registers:
+    admin.site.register(item[0], item[1])

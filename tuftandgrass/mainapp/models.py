@@ -313,6 +313,7 @@ class CategoryModel(models.Model):
     description_uz = models.TextField(verbose_name='Описание на узбекском')
     slug = models.SlugField(verbose_name='URL')
     img = models.ImageField(upload_to='categories/', verbose_name='Изображение')
+    has_subcategory = models.BooleanField(verbose_name='Есть подкатегории')
 
     def __str__(self):
         return self.title_ru
@@ -322,19 +323,54 @@ class CategoryModel(models.Model):
         verbose_name_plural = 'Категории'
 
 
-class SubCategoryModel(models.Model):
+class SubcategoryModel(models.Model):
     title_ru = models.CharField(max_length=200, verbose_name='Заголовок на русском')
     title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
     title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
+    description_ru = models.TextField(verbose_name='Описание на русском')
+    description_en = models.TextField(verbose_name='Описание на английском')
+    description_uz = models.TextField(verbose_name='Описание на узбекском')
     slug = models.SlugField(verbose_name='URL')
-    img = models.ImageField(upload_to='subcategories/', verbose_name='Изображение')
-    price = models.IntegerField(verbose_name='Цена')
+    img = models.ImageField(upload_to='categories/', verbose_name='Изображение')
     category = models.ForeignKey(
         CategoryModel,
         on_delete=models.PROTECT,
         verbose_name='Категория',
         related_name='subcategories'
     )
+
+    def __str__(self):
+        return self.title_ru
+
+    class Meta:
+        verbose_name = 'Подкатегория'
+        verbose_name_plural = 'Подкатегории'
+
+
+class CollectionModel(models.Model):
+    title_ru = models.CharField(max_length=200, verbose_name='Заголовок на русском')
+    title_en = models.CharField(max_length=200, verbose_name='Заголовок на английском')
+    title_uz = models.CharField(max_length=200, verbose_name='Заголовок на узбекском')
+    slug = models.SlugField(verbose_name='URL')
+    img = models.ImageField(upload_to='collections/', verbose_name='Изображение')
+    price = models.IntegerField(verbose_name='Цена')
+    category = models.ForeignKey(
+        CategoryModel,
+        on_delete=models.PROTECT,
+        verbose_name='Категория',
+        related_name='collections',
+        null=True,
+        blank=True
+    )
+    subcategory = models.ForeignKey(
+        SubcategoryModel,
+        on_delete=models.PROTECT,
+        verbose_name='Подкатегория',
+        related_name='collections',
+        null=True,
+        blank=True
+    )
+    show_price = models.BooleanField(verbose_name='Показывать цену')
 
     def __str__(self):
         return self.title_ru
@@ -353,8 +389,8 @@ class ProductModel(models.Model):
     description_uz = models.TextField(verbose_name='Описание на узбекском')
     slug = models.SlugField(verbose_name='URL')
     img = models.ImageField(upload_to='categories/', verbose_name='Изображение')
-    subcategory = models.ForeignKey(
-        SubCategoryModel,
+    collection = models.ForeignKey(
+        CollectionModel,
         on_delete=models.PROTECT,
         related_name='products',
         verbose_name='Коллекция'

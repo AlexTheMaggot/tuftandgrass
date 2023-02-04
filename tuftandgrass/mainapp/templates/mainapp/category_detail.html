@@ -1,7 +1,7 @@
 {% extends 'wrapper.html' %}
 {% load static %}
-{% block title %}{% if '/en/' in request.path %}{{ categorylistpage.title_en }}{% elif '/uz/' in request.path %}{{ categorylistpage.title_uz }}{% else %}{{ categorylistpage.title_ru }}{% endif %}{% endblock %}
-{% block description %}{% if '/en/' in request.path %}{{ categorylistpage.description_en }}{% elif '/uz/' in request.path %}{{ categorylistpage.description_uz }}{% else %}{{ categorylistpage.description_ru }}{% endif %}{% endblock %}
+{% block title %}{% if '/en/' in request.path %}{{ category.title_en }}{% elif '/uz/' in request.path %}{{ category.title_uz }}{% else %}{{ category.title_ru }}{% endif %}{% endblock %}
+{% block description %}{% if '/en/' in request.path %}{{ category.description_en }}{% elif '/uz/' in request.path %}{{ category.description_uz }}{% else %}{{ category.description_ru }}{% endif %}{% endblock %}
 {% block content %}
 	<!--[if lt IE 9]>
 		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
@@ -48,12 +48,22 @@
 						<div class="col-sm-12">
                             <div class="shop-sorting shop-sorting_cd">
 								<form class="form-inline content-justify vertical-center content-margins">
-                                    {% if '/en/' in request.path %}
-                                        <div class="fontsize_20">Results: {{ products.count }}</div>
-                                    {% elif '/uz/' in request.path %}
-                                        <div class="fontsize_20">Natijalar: {{ products.count }}</div>
+                                    {% if category.has_subcategory %}
+                                        {% if '/en/' in request.path %}
+                                            <div class="fontsize_20">Results: {{ subcategories.count }}</div>
+                                        {% elif '/uz/' in request.path %}
+                                            <div class="fontsize_20">Natijalar: {{ subcategories.count }}</div>
+                                        {% else %}
+                                            <div class="fontsize_20">Результатов: {{ subcategories.count }}</div>
+                                        {% endif %}
                                     {% else %}
-                                        <div class="fontsize_20">Результатов: {{ products.count }}</div>
+                                        {% if '/en/' in request.path %}
+                                            <div class="fontsize_20">Results: {{ collections.count }}</div>
+                                        {% elif '/uz/' in request.path %}
+                                            <div class="fontsize_20">Natijalar: {{ collections.count }}</div>
+                                        {% else %}
+                                            <div class="fontsize_20">Результатов: {{ collections.count }}</div>
+                                        {% endif %}
                                     {% endif %}
 									<div class="form-group select-group">
 										<select aria-required="true" id="sorting_products" name="sort" class="choice empty form-control">
@@ -78,35 +88,71 @@
 									</div>
 								</form>
 							</div>
-                            {% for subcategory in subcategories %}
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <article class="vertical-item content-padding post format-standard text-center">
-                                        <div class="item-media">
-                                            {% if '/en/' in request.path %}
-                                                <a href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark"><img src="{{ subcategory.img.url }}" alt=""></a>
-                                            {% elif '/uz/' in request.path %}
-                                                <a href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark"><img src="{{ subcategory.img.url }}" alt=""></a>
-                                            {% else %}
-                                                <a href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark"><img src="{{ subcategory.img.url }}" alt=""></a>
-                                            {% endif %}
-                                        </div>
-                                        <div class="item-content">
-                                            <header class="entry-header">
-                                                <h4 class="entry-title margin_0">
-                                                    {% if '/en/' in request.path %}
-                                                        <a href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark">{{ subcategory.title_en }}</a>
-                                                    {% elif '/uz/' in request.path %}
-                                                        <a href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark">{{ subcategory.title_uz }}</a>
-                                                    {% else %}
-                                                        <a href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark">{{ subcategory.title_ru }}</a>
-                                                    {% endif %}
-                                                </h4>
-                                            </header>
-                                            <p class="bold">{{ subcategory.price }} UZS</p>
-                                        </div>
-                                    </article>
-                                </div>
-                            {% endfor %}
+                            {% if category.has_subcategory %}
+                                {% for subcategory in subcategories %}
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <article class="vertical-item content-padding post format-standard text-center">
+                                            <div class="item-media">
+                                                {% if '/en/' in request.path %}
+                                                    <a href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark"><img src="{{ subcategory.img.url }}" alt=""></a>
+                                                {% elif '/uz/' in request.path %}
+                                                    <a href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark"><img src="{{ subcategory.img.url }}" alt=""></a>
+                                                {% else %}
+                                                    <a href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark"><img src="{{ subcategory.img.url }}" alt=""></a>
+                                                {% endif %}
+                                            </div>
+                                            <div class="item-content">
+                                                <header class="entry-header">
+                                                    <h4 class="entry-title margin_0">
+                                                        {% if '/en/' in request.path %}
+                                                            <a href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark">{{ subcategory.title_en }}</a>
+                                                        {% elif '/uz/' in request.path %}
+                                                            <a href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark">{{ subcategory.title_uz }}</a>
+                                                        {% else %}
+                                                            <a href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}" rel="bookmark">{{ subcategory.title_ru }}</a>
+                                                        {% endif %}
+                                                    </h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                {% for collection in collections %}
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <article class="vertical-item content-padding post format-standard text-center">
+                                            <div class="item-media">
+                                                {% if '/en/' in request.path %}
+                                                    <a href="{% url 'mainapp_en:collection_detail' category.slug collection.slug %}" rel="bookmark"><img src="{{ collection.img.url }}" alt=""></a>
+                                                {% elif '/uz/' in request.path %}
+                                                    <a href="{% url 'mainapp_uz:collection_detail' category.slug collection.slug %}" rel="bookmark"><img src="{{ collection.img.url }}" alt=""></a>
+                                                {% else %}
+                                                    <a href="{% url 'mainapp:collection_detail' category.slug collection.slug %}" rel="bookmark"><img src="{{ collection.img.url }}" alt=""></a>
+                                                {% endif %}
+                                            </div>
+                                            <div class="item-content">
+                                                <header class="entry-header">
+                                                    <h4 class="entry-title margin_0">
+                                                        {% if '/en/' in request.path %}
+                                                            <a href="{% url 'mainapp_en:collection_detail' category.slug collection.slug %}" rel="bookmark">{{ collection.title_en }}</a>
+                                                        {% elif '/uz/' in request.path %}
+                                                            <a href="{% url 'mainapp_uz:collection_detail' category.slug collection.slug %}" rel="bookmark">{{ collection.title_uz }}</a>
+                                                        {% else %}
+                                                            <a href="{% url 'mainapp:collection_detail' category.slug collection.slug %}" rel="bookmark">{{ collection.title_ru }}</a>
+                                                        {% endif %}
+                                                    </h4>
+                                                </header>
+                                                {% if collection.show_price %}
+                                                    <p class="bold">{{ collection.price }} UZS</p>
+                                                {% else %}
+                                                    <p class="bold" style="opacity: 0; pointer-events: none">{{ collection.price }} UZS</p>
+                                                {% endif %}
+                                            </div>
+                                        </article>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
 						</div>
 					</div>
 				</div>

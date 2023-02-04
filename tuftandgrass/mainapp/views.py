@@ -125,17 +125,20 @@ def category_list(request):
 
 def category_detail(request, category_slug):
     template = 'mainapp/category_detail.html'
-    products = ProductModel.objects.all().filter(subcategory__category__slug=category_slug)
-    subcategories = SubCategoryModel.objects.all().filter(category__slug=category_slug)
+    products = ProductModel.objects.all().filter(collection__category__slug=category_slug)
+    collections = CollectionModel.objects.all().filter(category__slug=category_slug)
+    subcategories = SubcategoryModel.objects.all().filter(category__slug=category_slug)
     if 'sort' in request.GET:
         products = products.order_by(request.GET['sort'])
+        collections = collections.order_by(request.GET['sort'])
         subcategories = subcategories.order_by(request.GET['sort'])
     else:
-        subcategories = subcategories.order_by('-id')
+        collections = collections.order_by('-id')
     context = {
         'category': get_object_or_404(CategoryModel, slug=category_slug),
         'categories': CategoryModel.objects.all(),
         'products': products,
+        'collections': collections,
         'subcategories': subcategories,
     }
     context = make_context(context)
@@ -143,25 +146,67 @@ def category_detail(request, category_slug):
 
 
 def subcategory_detail(request, category_slug, subcategory_slug):
+    collections = CollectionModel.objects.all().filter(subcategory__slug=subcategory_slug)
+    if 'sort' in request.GET:
+        collections = collections.order_by(request.GET['sort'])
     template = 'mainapp/subcategory_detail.html'
-    products = ProductModel.objects.all().filter(subcategory__slug=subcategory_slug)
+    context = {
+        'category': get_object_or_404(CategoryModel, slug=category_slug),
+        'subcategory': get_object_or_404(SubcategoryModel, slug=subcategory_slug),
+        'collections': collections,
+    }
+    context = make_context(context)
+    return render(request, template, context)
+
+
+def collection_detail(request, category_slug, collection_slug):
+    template = 'mainapp/collection_detail.html'
+    products = ProductModel.objects.all().filter(collection__slug=collection_slug)
     if 'sort' in request.GET:
         products = products.order_by(request.GET['sort'])
     context = {
         'category': get_object_or_404(CategoryModel, slug=category_slug),
         'categories': CategoryModel.objects.all(),
-        'subcategory': get_object_or_404(SubCategoryModel, slug=subcategory_slug),
+        'collection': get_object_or_404(CollectionModel, slug=collection_slug),
         'products': products,
     }
     context = make_context(context)
     return render(request, template, context)
 
 
-def product_detail(request, category_slug, subcategory_slug, product_slug):
+def collection_detail_sub(request, category_slug, subcategory_slug, collection_slug):
+    template = 'mainapp/collection_detail.html'
+    products = ProductModel.objects.all().filter(collection__slug=collection_slug)
+    if 'sort' in request.GET:
+        products = products.order_by(request.GET['sort'])
+    context = {
+        'category': get_object_or_404(CategoryModel, slug=category_slug),
+        'subcategory': get_object_or_404(SubcategoryModel, slug=subcategory_slug),
+        'categories': CategoryModel.objects.all(),
+        'collection': get_object_or_404(CollectionModel, slug=collection_slug),
+        'products': products,
+    }
+    context = make_context(context)
+    return render(request, template, context)
+
+
+def product_detail(request, category_slug, collection_slug, product_slug, subcaegory_slug=None):
     template = 'mainapp/product_detail.html'
     context = {
         'category': get_object_or_404(CategoryModel, slug=category_slug),
-        'subcategory':get_object_or_404(SubCategoryModel, slug=subcategory_slug),
+        'collection':get_object_or_404(CollectionModel, slug=collection_slug),
+        'product': get_object_or_404(ProductModel, slug=product_slug),
+    }
+    context = make_context(context)
+    return render(request, template, context)
+
+
+def product_detail_sub(request, category_slug, subcategory_slug, collection_slug, product_slug):
+    template = 'mainapp/product_detail.html'
+    context = {
+        'category': get_object_or_404(CategoryModel, slug=category_slug),
+        'collection': get_object_or_404(CollectionModel, slug=collection_slug),
+        'subcategory': get_object_or_404(SubcategoryModel, slug=subcategory_slug),
         'product': get_object_or_404(ProductModel, slug=product_slug),
     }
     context = make_context(context)

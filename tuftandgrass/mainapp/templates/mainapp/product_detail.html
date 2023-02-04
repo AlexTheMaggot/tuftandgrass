@@ -22,7 +22,14 @@
                                     <li><a href="{% url 'mainapp_en:index' %}">Home</a></li>
                                     <li><a href="{% url 'mainapp_en:category_list' %}">Catalog</a></li>
                                     <li><a href="{% url 'mainapp_en:category_detail' category.slug %}">{{ category.title_en }}</a></li>
-                                    <li><a href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_en }}</a></li>
+                                    {% if category.has_subcategory %}
+                                        <li><a href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_en }}</a></li>
+                                    {% endif %}
+                                    {% if category.has_subcategory %}
+                                        <li><a href="{% url 'mainapp_en:collection_detail_sub' category.slug subcategory.slug collection.slug %}">{{ collection.title_en }}</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'mainapp_en:collection_detail' category.slug collection.slug %}">{{ collection.title_en }}</a></li>
+                                    {% endif %}
                                     <li class="active">{{ product.title_en }}</li>
                                 </ol>
                             {% elif '/uz/' in request.path %}
@@ -31,7 +38,14 @@
                                     <li><a href="{% url 'mainapp_uz:index' %}">Uy</a></li>
                                     <li><a href="{% url 'mainapp_uz:category_list' %}">Katalog</a></li>
                                     <li><a href="{% url 'mainapp_uz:category_detail' category.slug %}">{{ category.title_uz }}</a></li>
-                                    <li><a href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_uz }}</a></li>
+                                    {% if category.has_subcategory %}
+                                        <li><a href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_uz }}</a></li>
+                                    {% endif %}
+                                    {% if category.has_subcategrory %}
+                                        <li><a href="{% url 'mainapp_uz:collection_detail_sub' category.slug subcategory.slug collection.slug %}">{{ collection.title_uz }}</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'mainapp_uz:collection_detail' category.slug collection.slug %}">{{ collection.title_uz }}</a></li>
+                                    {% endif %}
                                     <li class="active">{{ product.title_uz }}</li>
                                 </ol>
                             {% else %}
@@ -40,7 +54,14 @@
                                     <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
                                     <li><a href="{% url 'mainapp:category_list' %}">Каталог</a></li>
                                     <li><a href="{% url 'mainapp:category_detail' category.slug %}">{{ category.title_ru }}</a></li>
-                                    <li><a href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_ru }}</a></li>
+                                    {% if category.has_subcategory %}
+                                        <li><a href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_ru }}</a></li>
+                                    {% endif %}
+                                    {% if category.has_subcategory %}
+                                        <li><a href="{% url 'mainapp:collection_detail_sub' category.slug subcategory.slug collection.slug %}">{{ collection.title_ru }}</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'mainapp:collection_detail' category.slug collection.slug %}">{{ collection.title_ru }}</a></li>
+                                    {% endif %}
                                     <li class="active">{{ product.title_ru }}</li>
                                 </ol>
                             {% endif %}
@@ -84,10 +105,22 @@
                                                         <a rel="category" href="{% url 'mainapp_en:category_detail' category.slug %}">{{ category.title_en }}</a>
                                                     </span>
                                                 </span>
+                                                {% if category.has_subcategory %}
+                                                    <span class="posted_in">
+                                                        <span class="grey">Subcategory:</span>
+                                                        <span class="categories-links small-text">
+                                                            <a rel="category" href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_en }}</a>
+                                                        </span>
+                                                    </span>
+                                                {% endif %}
                                                 <span class="posted_in">
-                                                    <span class="grey">Subcategory:</span>
+                                                    <span class="grey">Collection:</span>
                                                     <span class="categories-links small-text">
-                                                        <a rel="category" href="{% url 'mainapp_en:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_en }}</a>
+                                                        {% if category.has_subcategory %}
+                                                            <a rel="category" href="{% url 'mainapp_en:collection_detail_sub' category.slug subcategory.slug collection.slug %}">{{ collection.title_en }}</a>
+                                                        {% else %}
+                                                            <a rel="category" href="{% url 'mainapp_en:collection_detail' category.slug collection.slug %}">{{ collection.title_en }}</a>
+                                                        {% endif %}
                                                     </span>
                                                 </span>
                                             </div>
@@ -100,10 +133,22 @@
                                                         <a rel="category" href="{% url 'mainapp_uz:category_detail' category.slug %}">{{ category.title_uz }}</a>
                                                     </span>
                                                 </span>
+                                                {% if category.has_subcategory %}
+                                                    <span class="posted_in">
+                                                        <span class="grey">Podkategoriya:</span>
+                                                        <span class="categories-links small-text">
+                                                            <a rel="category" href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_uz }}</a>
+                                                        </span>
+                                                    </span>
+                                                {% endif %}
                                                 <span class="posted_in">
-                                                    <span class="grey">Subkategoriya:</span>
+                                                    <span class="grey">Kolleksiya:</span>
                                                     <span class="categories-links small-text">
-                                                        <a rel="category" href="{% url 'mainapp_uz:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_uz }}</a>
+                                                        {% if category.has_subcategory %}
+                                                            <a rel="category" href="{% url 'mainapp_uz:collection_detail_sub' category.slug subcategory.slug collection.slug %}">{{ collection.title_uz }}</a>
+                                                        {% else %}
+                                                            <a rel="category" href="{% url 'mainapp_uz:collection_detail' category.slug collection.slug %}">{{ collection.title_uz }}</a>
+                                                        {% endif %}
                                                     </span>
                                                 </span>
                                             </div>
@@ -116,10 +161,22 @@
                                                         <a rel="category" href="{% url 'mainapp:category_detail' category.slug %}">{{ category.title_ru }}</a>
                                                     </span>
                                                 </span>
+                                                {% if category.has_subcategory %}
+                                                    <span class="posted_in">
+                                                        <span class="grey">Подкатегория:</span>
+                                                        <span class="categories-links small-text">
+                                                            <a rel="category" href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_ru }}</a>
+                                                        </span>
+                                                    </span>
+                                                {% endif %}
                                                 <span class="posted_in">
-                                                    <span class="grey">Подкатегория:</span>
+                                                    <span class="grey">Коллекция:</span>
                                                     <span class="categories-links small-text">
-                                                        <a rel="category" href="{% url 'mainapp:subcategory_detail' category.slug subcategory.slug %}">{{ subcategory.title_ru }}</a>
+                                                        {% if category.has_subcategory %}
+                                                            <a rel="category" href="{% url 'mainapp:collection_detail_sub' category.slug subcategory.slug collection.slug %}">{{ collection.title_ru }}</a>
+                                                        {% else %}
+                                                            <a rel="category" href="{% url 'mainapp:collection_detail' category.slug collection.slug %}">{{ collection.title_ru }}</a>
+                                                        {% endif %}
                                                     </span>
                                                 </span>
                                             </div>
