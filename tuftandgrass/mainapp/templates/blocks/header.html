@@ -34,10 +34,31 @@
                                     <li><a href="{% url 'mainapp:about' %}">О нас</a></li>
                                     <li><a href="{% url 'mainapp:contacts' %}">Контакты</a></li>
                                 {% endif %}
-
-                            <li><a href="/" id="header_language_ru">Рус</a></li>
-                            <li><a href="/" id="header_language_uz">O'z</a></li>
-                            <li><a href="/" id="header_language_en">Eng</a></li>
+                                {% if '/en/' in request.path %}
+                                    <li>
+                                        <a href="/" id="header_language_en">Eng</a>
+                                        <ul>
+                                            <li><a href="/" id="header_language_uz">O'z</a></li>
+                                            <li><a href="/" id="header_language_ru">Рус</a></li>
+                                        </ul>
+                                    </li>
+                                {% elif '/uz/' in request.path %}
+                                    <li>
+                                        <a href="/" id="header_language_uz">O'z</a>
+                                        <ul>
+                                            <li><a href="/" id="header_language_ru">Рус</a></li>
+                                            <li><a href="/" id="header_language_en">Eng</a></li>
+                                        </ul>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="/" id="header_language_ru">Рус</a>
+                                        <ul>
+                                            <li><a href="/" id="header_language_uz">O'z</a></li>
+                                            <li><a href="/" id="header_language_en">Eng</a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
                         </ul>
                     </nav>
                     <span class="toggle_menu">

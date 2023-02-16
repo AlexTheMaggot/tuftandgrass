@@ -389,7 +389,7 @@
 							<hr class="divider_30_2 main_bg_color2">
 							<form class="contact-form row columns_margin_bottom_20 topmargin_60" method="POST" action="/">
                                 {% csrf_token %}
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
                                         {% if '/en/' in request.path %}
                                             <label for="consultation-name">Full Name<span class="required">*</span></label>
@@ -406,7 +406,7 @@
                                         {% endif %}
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
                                         {% if '/en/' in request.path %}
                                             <label for="consultation-phone">Phone Number<span class="required">*</span></label>
@@ -424,11 +424,11 @@
 									</div>
 								</div>
 								<div class="col-md-4">
-									<div class="form-group">
-										<label for="consultation-email">E-mail</label>
-										<i class="fa fa-envelope highlight2" aria-hidden="true"></i>
-										<input type="email" aria-required="false" size="30" value="" name="email" id="consultation-email" class="form-control" placeholder="E-mail">
-									</div>
+{#									<div class="form-group">#}
+{#										<label for="consultation-email">E-mail</label>#}
+{#										<i class="fa fa-envelope highlight2" aria-hidden="true"></i>#}
+{#									</div>#}
+										<input type="hidden" aria-required="false" size="30" value="" name="email" id="consultation-email" class="form-control" placeholder="E-mail">
 								</div>
 								<div class="col-sm-12">
 									<div class="form-group">
