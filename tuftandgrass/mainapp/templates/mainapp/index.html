@@ -18,7 +18,7 @@
 	<div id="canvas">
 		<div id="box_wrapper">
 			{% include 'blocks/header.html' %}
-			<section class="ds black section_padding_top_5 section_padding_bottom_5 section_bottom_overlap">
+            <section class="ds black section_padding_top_5 section_padding_bottom_5 section_bottom_overlap">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-4 col-sm-6 text-sm-center text-md-left">
@@ -92,7 +92,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="intro_section page_mainslider ds">
+            <section class="intro_section page_mainslider ds">
 				<div class="flexslider" data-nav="false">
 					<ul class="slides">
                         {% for slide in slides %}
@@ -142,6 +142,216 @@
 						</li>
                         {% endfor %}
 					</ul>
+				</div>
+			</section>
+            <section id="blog" class="ls ms section_padding_top_150 section_padding_bottom_130">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+                            {% if '/en/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.eighthblock_title_en }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.eighthblock_description_en }}</p>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.eighthblock_title_uz }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.eighthblock_description_uz }}</p>
+                            {% else %}
+                                <h2 class="section_header">{{ indexpage.eighthblock_title_ru }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.eighthblock_description_ru }}</p>
+                            {% endif %}
+						</div>
+					</div>
+					<div class="row columns_margin_bottom_20 topmargin_60">
+                        {% for post in three_posts %}
+                            <div class="col-md-4 col-sm-6">
+							<article class="vertical-item content-padding with_background text-center overflow-hidden">
+								<div class="item-media">
+									<img src="{{ post.img.url }}" alt="">
+
+									<div class="media-links">
+                                        {% if '/en/' in request.path %}
+                                            <a href="{% url "mainapp_en:news_detail" post.id %}" class="abs-link"></a>
+                                        {% elif '/uz/' in request.path %}
+                                            <a href="{% url "mainapp_uz:news_detail" post.id %}" class="abs-link"></a>
+                                        {% else %}
+                                            <a href="{% url "mainapp:news_detail" post.id %}" class="abs-link"></a>
+                                        {% endif %}
+									</div>
+
+								</div>
+								<div class="item-content">
+									<span class="entry-date small-text highlight2">
+										<time class="entry-date" datetime="2017-03-13T08:50:40+00:00">{{ post.date|date:'Y-m-d' }}</time>
+									</span>
+                                    {% if '/en/' in request.path %}
+                                        <h4 class="entry-title"><a href="{% url "mainapp_en:news_detail" post.id %}">{{ post.title_en }}</a></h4>
+                                        <p>{{ post.description_en }}</p>
+                                        <a href="{% url "mainapp_en:news_detail" post.id %}" class="theme_button color1 topmargin_10">Read more</a>
+                                    {% elif '/uz/' in request.path %}
+                                        <h4 class="entry-title"><a href="{% url "mainapp_uz:news_detail" post.id %}">{{ post.title_uz }}</a></h4>
+                                        <p>{{ post.description_uz }}</p>
+                                        <a href="{% url "mainapp_uz:news_detail" post.id %}" class="theme_button color1 topmargin_10">Ko'proq o'qing</a>
+                                    {% else %}
+                                        <h4 class="entry-title"><a href="{% url "mainapp:news_detail" post.id %}">{{ post.title_ru }}</a></h4>
+                                        <p>{{ post.description_ru }}</p>
+                                        <a href="{% url "mainapp:news_detail" post.id %}" class="theme_button color1 topmargin_10">Читать далее</a>
+                                    {% endif %}
+								</div>
+							</article>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+			<section id="products" class="ls ms section_padding_100">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+                            {% if '/en/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.thirdblock_title_en }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.thirdblock_description_en }}</p>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.thirdblock_title_uz }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.thirdblock_description_uz }}</p>
+                            {% else %}
+                                <h2 class="section_header">{{ indexpage.thirdblock_title_ru }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.thirdblock_description_ru }}</p>
+                            {% endif %}
+							<div class="owl-carousel topmargin_60" data-nav="true" data-dots="false" data-responsive-lg="3" data-loop="true" data-margin="60">
+                                {% for product in products %}
+                                    <article class="vertical-item product-item">
+                                        <div class="item-media bottommargin_30">
+                                            <img src="{{ product.img.url }}" alt="" />
+                                        </div>
+                                        <div class="item-content">
+                                            {% if '/en/' in request.path %}
+                                                <h4><a href="/en{{ product.link }}">{{ product.title_en }}</a></h4>
+                                                <p>{{ product.description_en }}</p>
+                                            {% elif '/uz/' in request.path %}
+                                                <h4><a href="/uz{{ product.link }}">{{ product.title_uz }}</a></h4>
+                                                <p>{{ product.description_uz }}</p>
+                                            {% else %}
+                                                <h4><a href="{{ product.link }}">{{ product.title_ru }}</a></h4>
+                                                <p>{{ product.description_ru }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </article>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+            <section id="faq" class="ls overflow_hidden half_section section_padding_top_150 section_padding_bottom_150 columns_padding_80">
+				<div class="image_cover image_cover_left"></div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6">
+							<img src="{{ indexpage.fourthblock_img.url }}" alt="">
+						</div>
+						<!-- .col-* -->
+						<div class="col-md-6">
+                            {% if '/en/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.fourthblock_title_en }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.fourthblock_description_en }}</p>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.fourthblock_title_uz }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.fourthblock_description_uz }}</p>
+                            {% else %}
+                                <h2 class="section_header">{{ indexpage.fourthblock_title_ru }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.fourthblock_description_ru }}</p>
+                            {% endif %}
+							<div class="panel-group" id="accordion1">
+                                {% for faq in faqs %}
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion1" href="index.html#collapse{{ faq.id }}" class="collapsed">
+                                                    <i class="fa fa-comment"></i>
+                                                    {% if '/en/' in request.path %}
+                                                        {{ faq.question_en }}
+                                                    {% elif '/uz/' in request.path %}
+                                                        {{ faq.question_uz }}
+                                                    {% else %}
+                                                        {{ faq.question_ru }}
+                                                    {% endif %}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse{{ faq.id }}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                {% if '/en/' in request.path %}
+                                                    {{ faq.answer_en }}
+                                                {% elif '/uz/' in request.path %}
+                                                    {{ faq.answer_uz }}
+                                                {% else %}
+                                                    {{ faq.answer_ru }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+            <section id="team" class="ls ms section_padding_top_130 section_padding_bottom_130">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+                            {% if '/en/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.fifthblock_title_en }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.fifthblock_description_en }}</p>
+                            {% elif '/uz/' in request.path %}
+                                <h2 class="section_header">{{ indexpage.fifthblock_title_uz }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.fifthblock_description_uz }}</p>
+                            {% else %}
+                                <h2 class="section_header">{{ indexpage.fifthblock_title_ru }}</h2>
+                                <hr class="divider_30_2 main_bg_color2">
+                                <p>{{ indexpage.fifthblock_description_ru }}</p>
+                            {% endif %}
+							<div class="owl-carousel team-carousel topmargin_60" data-nav="true" data-dots="false" data-responsive-lg="3" data-loop="true" data-margin="60">
+								{% for unit in team %}
+                                    <article class="vertical-item">
+                                        <div class="item-media bottommargin_40">
+                                            <img src="{{ unit.img.url }}" alt="" class="round" />
+                                        </div>
+                                        <div class="item-content">
+                                            {% if '/en/' in request.path %}
+                                                <h4 class="bottommargin_0"><a href="service-single.html">{{ unit.name_en }}</a></h4>
+                                                <p class="small-text highlight2">{{ unit.position_en }}</p>
+                                                <p>{{ unit.description_en }}</p>
+                                            {% elif '/uz/' in request.path %}
+                                                <h4 class="bottommargin_0"><a href="service-single.html">{{ unit.name_uz }}</a></h4>
+                                                <p class="small-text highlight2">{{ unit.position_uz }}</p>
+                                                <p>{{ unit.description_uz }}</p>
+                                            {% else %}
+                                                <h4 class="bottommargin_0"><a href="service-single.html">{{ unit.name_ru }}</a></h4>
+                                                <p class="small-text highlight2">{{ unit.position_ru }}</p>
+                                                <p>{{ unit.description_ru }}</p>
+                                            {% endif %}
+                                            <p class="greylinks">
+                                                <a class="social-icon soc-facebook" href="{{ unit.facebook }}" title="Facebook"></a>
+                                                <a class="social-icon soc-instagram" href="{{ unit.instagram }}" title="Twitter"></a>
+                                                <a class="social-icon soc-telegram" href="{{ unit.telegram }}" title="Google"></a>
+                                            </p>
+                                        </div>
+                                    </article>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 			<section id="about" class="ls section_padding_100">
@@ -226,149 +436,46 @@
 					</div>
 				</div>
 			</section>
-			<section id="products" class="ls ms section_padding_100">
+			<section id="review" class="ls section_padding_top_150 section_padding_bottom_150">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-12 text-center">
+						<div class="col-lg-10 col-lg-offset-1 text-center">
                             {% if '/en/' in request.path %}
-                                <h2 class="section_header">{{ indexpage.thirdblock_title_en }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.thirdblock_description_en }}</p>
+                                <h2 class="section_header">Testimonials</h2>
                             {% elif '/uz/' in request.path %}
-                                <h2 class="section_header">{{ indexpage.thirdblock_title_uz }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.thirdblock_description_uz }}</p>
+                                <h2 class="section_header">Sharhlar</h2>
                             {% else %}
-                                <h2 class="section_header">{{ indexpage.thirdblock_title_ru }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.thirdblock_description_ru }}</p>
+                                <h2 class="section_header">Отзывы</h2>
                             {% endif %}
-							<div class="owl-carousel topmargin_60" data-nav="true" data-dots="false" data-responsive-lg="3" data-loop="true" data-margin="60">
-                                {% for product in products %}
-                                    <article class="vertical-item product-item">
-                                        <div class="item-media bottommargin_30">
-                                            <img src="{{ product.img.url }}" alt="" />
-                                        </div>
-                                        <div class="item-content">
-                                            {% if '/en/' in request.path %}
-                                                <h4><a href="/en{{ product.link }}">{{ product.title_en }}</a></h4>
-                                                <p>{{ product.description_en }}</p>
-                                            {% elif '/uz/' in request.path %}
-                                                <h4><a href="/uz{{ product.link }}">{{ product.title_uz }}</a></h4>
-                                                <p>{{ product.description_uz }}</p>
-                                            {% else %}
-                                                <h4><a href="{{ product.link }}">{{ product.title_ru }}</a></h4>
-                                                <p>{{ product.description_ru }}</p>
-                                            {% endif %}
-                                        </div>
-                                    </article>
+							<hr class="divider_30_2 main_bg_color2">
+							<div class="owl-carousel testimonials-owl-content topmargin_60" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1" data-loop="true" data-margin="20" data-dots="false" data-nav="true">
+								{% for review in reviews %}
+                                    {% if '/en/' in request.path %}
+                                        <blockquote class="with_quotes">{{ review.text_en }}</blockquote>
+                                    {% elif '/uz/' in request.path %}
+                                        <blockquote class="with_quotes">{{ review.text_uz }}</blockquote>
+                                    {% else %}
+                                        <blockquote class="with_quotes">{{ review.text_ru }}</blockquote>
+                                    {% endif %}
                                 {% endfor %}
 							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section id="faq" class="ls overflow_hidden half_section section_padding_top_150 section_padding_bottom_150 columns_padding_80">
-				<div class="image_cover image_cover_left"></div>
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-6">
-							<img src="{{ indexpage.fourthblock_img.url }}" alt="">
-						</div>
-						<!-- .col-* -->
-						<div class="col-md-6">
-                            {% if '/en/' in request.path %}
-                                <h2 class="section_header">{{ indexpage.fourthblock_title_en }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.fourthblock_description_en }}</p>
-                            {% elif '/uz/' in request.path %}
-                                <h2 class="section_header">{{ indexpage.fourthblock_title_uz }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.fourthblock_description_uz }}</p>
-                            {% else %}
-                                <h2 class="section_header">{{ indexpage.fourthblock_title_ru }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.fourthblock_description_ru }}</p>
-                            {% endif %}
-							<div class="panel-group" id="accordion1">
-                                {% for faq in faqs %}
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion1" href="index.html#collapse{{ faq.id }}" class="collapsed">
-                                                    <i class="fa fa-comment"></i>
-                                                    {% if '/en/' in request.path %}
-                                                        {{ faq.question_en }}
-                                                    {% elif '/uz/' in request.path %}
-                                                        {{ faq.question_uz }}
-                                                    {% else %}
-                                                        {{ faq.question_ru }}
-                                                    {% endif %}
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse{{ faq.id }}" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                {% if '/en/' in request.path %}
-                                                    {{ faq.answer_en }}
-                                                {% elif '/uz/' in request.path %}
-                                                    {{ faq.answer_uz }}
-                                                {% else %}
-                                                    {{ faq.answer_ru }}
-                                                {% endif %}
-                                            </div>
+							<div class="owl-carousel testimonials-owl-dots topmargin_20" data-responsive-lg="3" data-responsive-md="3" data-responsive-sm="3" data-responsive-xs="3" data-center="true" data-loop="true" data-margin="30" data-touch-drag="false" data-mouse-drag="false">
+								{% for review in reviews %}
+                                    <div>
+                                        <img src="{{ review.img.url }}" alt="" />
+                                        <div class="item-meta">
+                                            {% if '/en/' in request.path %}
+                                                <h4 class="bottommargin_0">{{ review.name_en }}</h4>
+                                                <p class="small-text highlight2">{{ review.position_en }}</p>
+                                            {% elif '/uz/' in request.path %}
+                                                <h4 class="bottommargin_0">{{ review.name_uz }}</h4>
+                                                <p class="small-text highlight2">{{ review.position_uz }}</p>
+                                            {% else %}
+                                                <h4 class="bottommargin_0">{{ review.name_ru }}</h4>
+                                                <p class="small-text highlight2">{{ review.position_ru }}</p>
+                                            {% endif %}
                                         </div>
                                     </div>
-                                {% endfor %}
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section id="team" class="ls ms section_padding_top_130 section_padding_bottom_130">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12 text-center">
-                            {% if '/en/' in request.path %}
-                                <h2 class="section_header">{{ indexpage.fifthblock_title_en }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.fifthblock_description_en }}</p>
-                            {% elif '/uz/' in request.path %}
-                                <h2 class="section_header">{{ indexpage.fifthblock_title_uz }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.fifthblock_description_uz }}</p>
-                            {% else %}
-                                <h2 class="section_header">{{ indexpage.fifthblock_title_ru }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.fifthblock_description_ru }}</p>
-                            {% endif %}
-							<div class="owl-carousel team-carousel topmargin_60" data-nav="true" data-dots="false" data-responsive-lg="3" data-loop="true" data-margin="60">
-								{% for unit in team %}
-                                    <article class="vertical-item">
-                                        <div class="item-media bottommargin_40">
-                                            <img src="{{ unit.img.url }}" alt="" class="round" />
-                                        </div>
-                                        <div class="item-content">
-                                            {% if '/en/' in request.path %}
-                                                <h4 class="bottommargin_0"><a href="service-single.html">{{ unit.name_en }}</a></h4>
-                                                <p class="small-text highlight2">{{ unit.position_en }}</p>
-                                                <p>{{ unit.description_en }}</p>
-                                            {% elif '/uz/' in request.path %}
-                                                <h4 class="bottommargin_0"><a href="service-single.html">{{ unit.name_uz }}</a></h4>
-                                                <p class="small-text highlight2">{{ unit.position_uz }}</p>
-                                                <p>{{ unit.description_uz }}</p>
-                                            {% else %}
-                                                <h4 class="bottommargin_0"><a href="service-single.html">{{ unit.name_ru }}</a></h4>
-                                                <p class="small-text highlight2">{{ unit.position_ru }}</p>
-                                                <p>{{ unit.description_ru }}</p>
-                                            {% endif %}
-                                            <p class="greylinks">
-                                                <a class="social-icon soc-facebook" href="{{ unit.facebook }}" title="Facebook"></a>
-                                                <a class="social-icon soc-instagram" href="{{ unit.instagram }}" title="Twitter"></a>
-                                                <a class="social-icon soc-telegram" href="{{ unit.telegram }}" title="Google"></a>
-                                            </p>
-                                        </div>
-                                    </article>
                                 {% endfor %}
 							</div>
 						</div>
@@ -460,113 +567,6 @@
 								</div>
 							</form>
 						</div>
-					</div>
-				</div>
-			</section>
-			<section id="review" class="ls section_padding_top_150 section_padding_bottom_150">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-10 col-lg-offset-1 text-center">
-                            {% if '/en/' in request.path %}
-                                <h2 class="section_header">Testimonials</h2>
-                            {% elif '/uz/' in request.path %}
-                                <h2 class="section_header">Sharhlar</h2>
-                            {% else %}
-                                <h2 class="section_header">Отзывы</h2>
-                            {% endif %}
-							<hr class="divider_30_2 main_bg_color2">
-							<div class="owl-carousel testimonials-owl-content topmargin_60" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1" data-loop="true" data-margin="20" data-dots="false" data-nav="true">
-								{% for review in reviews %}
-                                    {% if '/en/' in request.path %}
-                                        <blockquote class="with_quotes">{{ review.text_en }}</blockquote>
-                                    {% elif '/uz/' in request.path %}
-                                        <blockquote class="with_quotes">{{ review.text_uz }}</blockquote>
-                                    {% else %}
-                                        <blockquote class="with_quotes">{{ review.text_ru }}</blockquote>
-                                    {% endif %}
-                                {% endfor %}
-							</div>
-							<div class="owl-carousel testimonials-owl-dots topmargin_20" data-responsive-lg="3" data-responsive-md="3" data-responsive-sm="3" data-responsive-xs="3" data-center="true" data-loop="true" data-margin="30" data-touch-drag="false" data-mouse-drag="false">
-								{% for review in reviews %}
-                                    <div>
-                                        <img src="{{ review.img.url }}" alt="" />
-                                        <div class="item-meta">
-                                            {% if '/en/' in request.path %}
-                                                <h4 class="bottommargin_0">{{ review.name_en }}</h4>
-                                                <p class="small-text highlight2">{{ review.position_en }}</p>
-                                            {% elif '/uz/' in request.path %}
-                                                <h4 class="bottommargin_0">{{ review.name_uz }}</h4>
-                                                <p class="small-text highlight2">{{ review.position_uz }}</p>
-                                            {% else %}
-                                                <h4 class="bottommargin_0">{{ review.name_ru }}</h4>
-                                                <p class="small-text highlight2">{{ review.position_ru }}</p>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                {% endfor %}
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section id="blog" class="ls ms section_padding_top_150 section_padding_bottom_130">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12 text-center">
-                            {% if '/en/' in request.path %}
-                                <h2 class="section_header">{{ indexpage.eighthblock_title_en }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.eighthblock_description_en }}</p>
-                            {% elif '/uz/' in request.path %}
-                                <h2 class="section_header">{{ indexpage.eighthblock_title_uz }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.eighthblock_description_uz }}</p>
-                            {% else %}
-                                <h2 class="section_header">{{ indexpage.eighthblock_title_ru }}</h2>
-                                <hr class="divider_30_2 main_bg_color2">
-                                <p>{{ indexpage.eighthblock_description_ru }}</p>
-                            {% endif %}
-						</div>
-					</div>
-					<div class="row columns_margin_bottom_20 topmargin_60">
-                        {% for post in three_posts %}
-                            <div class="col-md-4 col-sm-6">
-							<article class="vertical-item content-padding with_background text-center overflow-hidden">
-								<div class="item-media">
-									<img src="{{ post.img.url }}" alt="">
-
-									<div class="media-links">
-                                        {% if '/en/' in request.path %}
-                                            <a href="{% url "mainapp_en:news_detail" post.id %}" class="abs-link"></a>
-                                        {% elif '/uz/' in request.path %}
-                                            <a href="{% url "mainapp_uz:news_detail" post.id %}" class="abs-link"></a>
-                                        {% else %}
-                                            <a href="{% url "mainapp:news_detail" post.id %}" class="abs-link"></a>
-                                        {% endif %}
-									</div>
-
-								</div>
-								<div class="item-content">
-									<span class="entry-date small-text highlight2">
-										<time class="entry-date" datetime="2017-03-13T08:50:40+00:00">{{ post.date|date:'Y-m-d' }}</time>
-									</span>
-                                    {% if '/en/' in request.path %}
-                                        <h4 class="entry-title"><a href="{% url "mainapp_en:news_detail" post.id %}">{{ post.title_en }}</a></h4>
-                                        <p>{{ post.description_en }}</p>
-                                        <a href="{% url "mainapp_en:news_detail" post.id %}" class="theme_button color1 topmargin_10">Read more</a>
-                                    {% elif '/uz/' in request.path %}
-                                        <h4 class="entry-title"><a href="{% url "mainapp_uz:news_detail" post.id %}">{{ post.title_uz }}</a></h4>
-                                        <p>{{ post.description_uz }}</p>
-                                        <a href="{% url "mainapp_uz:news_detail" post.id %}" class="theme_button color1 topmargin_10">Ko'proq o'qing</a>
-                                    {% else %}
-                                        <h4 class="entry-title"><a href="{% url "mainapp:news_detail" post.id %}">{{ post.title_ru }}</a></h4>
-                                        <p>{{ post.description_ru }}</p>
-                                        <a href="{% url "mainapp:news_detail" post.id %}" class="theme_button color1 topmargin_10">Читать далее</a>
-                                    {% endif %}
-								</div>
-							</article>
-						</div>
-						{% endfor %}
 					</div>
 				</div>
 			</section>
