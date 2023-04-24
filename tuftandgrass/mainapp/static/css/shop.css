@@ -1378,3 +1378,8 @@ table.cart .product-remove {
 .widget_rating_filter .star-rating {
 	float: left;
 }
+
+.lang__img {
+	height: 20px;
+	border: 1px solid #333333;
+}

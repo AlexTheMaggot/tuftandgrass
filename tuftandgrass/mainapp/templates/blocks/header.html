@@ -36,26 +36,56 @@
                                 {% endif %}
                                 {% if '/en/' in request.path %}
                                     <li>
-                                        <a href="/" id="header_language_en">Eng</a>
+                                        <a href="/" id="header_language_en">
+                                            <img class="lang__img" src="{% static 'img/USA.svg' %}" alt="">
+                                        </a>
                                         <ul>
-                                            <li><a href="/" id="header_language_uz">O'z</a></li>
-                                            <li><a href="/" id="header_language_ru">Рус</a></li>
+                                            <li>
+                                                <a href="/" id="header_language_uz">
+                                                    <img class="lang__img" src="{% static 'img/UZB.svg' %}" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/" id="header_language_ru">
+                                                    <img class="lang__img" src="{% static 'img/RUS.svg' %}" alt="">
+                                                </a>
+                                            </li>
                                         </ul>
                                     </li>
                                 {% elif '/uz/' in request.path %}
                                     <li>
-                                        <a href="/" id="header_language_uz">O'z</a>
+                                        <a href="/" id="header_language_uz">
+                                            <img class="lang__img" src="{% static 'img/UZB.svg' %}" alt="">
+                                        </a>
                                         <ul>
-                                            <li><a href="/" id="header_language_ru">Рус</a></li>
-                                            <li><a href="/" id="header_language_en">Eng</a></li>
+                                            <li>
+                                                <a href="/" id="header_language_ru">
+                                                    <img class="lang__img" src="{% static 'img/RUS.svg' %}" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/" id="header_language_en">
+                                                    <img class="lang__img" src="{% static 'img/USA.svg' %}" alt="">
+                                                </a>
+                                            </li>
                                         </ul>
                                     </li>
                                 {% else %}
                                     <li>
-                                        <a href="/" id="header_language_ru">Рус</a>
+                                        <a href="/" id="header_language_ru">
+                                            <img class="lang__img" src="{% static 'img/RUS.svg' %}" alt="">
+                                        </a>
                                         <ul>
-                                            <li><a href="/" id="header_language_uz">O'z</a></li>
-                                            <li><a href="/" id="header_language_en">Eng</a></li>
+                                            <li>
+                                                <a href="/" id="header_language_uz">
+                                                    <img class="lang__img" src="{% static 'img/UZB.svg' %}" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/" id="header_language_en">
+                                                    <img class="lang__img" src="{% static 'img/USA.svg' %}" alt="">
+                                                </a>
+                                            </li>
                                         </ul>
                                     </li>
                                 {% endif %}
